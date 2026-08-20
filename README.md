@@ -95,11 +95,6 @@ Nếu bạn mới bắt đầu tìm hiểu DSA, gợi ý thứ tự đọc:
 - Tài liệu được tổng hợp phục vụ mục đích **học tập cá nhân**, dựa trên nội dung giảng dạy tại **Đại học Hồng Đức (HDU)** kết hợp tài liệu tham khảo bên ngoài.
 - Không đại diện cho giáo trình chính thức của nhà trường hay giảng viên.
 
----
-
-## 📄 License
-
-Nội dung trong repo được chia sẻ với mục đích học tập, tham khảo tự do (ghi nguồn nếu sử dụng lại). Có thể cân nhắc gắn license cụ thể (ví dụ [MIT](https://opensource.org/licenses/MIT) hoặc [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)) nếu muốn công khai điều khoản sử dụng rõ ràng hơn.
 
 ---
 
