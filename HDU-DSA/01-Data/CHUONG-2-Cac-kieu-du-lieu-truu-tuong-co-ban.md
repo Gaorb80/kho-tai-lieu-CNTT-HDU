@@ -91,37 +91,26 @@ b) Viết giải thuật tính tổng giá tiền của tất cả mặt hàng h
 **9.** Thực hiện các yêu cầu của bài 1,2,3,4 với cấu trúc danh sách liên kết đôi.
 
 **10.** Giả sử ma trận vuông thưa được lưu trữ dạng danh sách liên kết đơn.
-
 a. Tính tổng các phần tử trên đường chéo chính của ma trận trên.
-
 b. Tính tổng các phần tử trên đường chéo phụ của ma trận trên.
 
 **11.** Sử dụng cấu trúc danh sách liên kết đơn để lưu trữ n số nguyên nhập từ bàn phím.
-
 a. Loại bỏ tất cả các phần tử bị lặp trong danh sách nói trên.
-
 b. Loại bỏ tất cả các phần tử âm trong danh sách nói trên.
-
 c. Sắp xếp các số đó theo chiều tăng dần.
 
 **12.** Viết chương trình cho phép nhập 2 đa thức (đa thức được tổ chức dạng danh sách liên kết đơn).
-
 a. Tính tổng 2 đa thức.
-
 b. Tính hiệu 2 đa thức.
 
 **13.** Viết chương trình cho phép nhập 2 đa thức (đa thức được tổ chức dạng danh sách liên kết kép).
-
 a. Tính tổng 2 đa thức.
-
 b. Tính hiệu 2 đa thức.
 
 **14.** Xây dựng một cấu trúc dữ liệu thích hợp để biểu diễn đa thức P(x) có dạng:
-
 > P(x) = c₁xn¹ + c₂xn² +...+cₖxnᵏ
 
 Biết rằng:
-
 - Các thao tác xử lý trên đa thức bao gồm:
   - + thêm một phần tử vào cuối đa thức
   - + đưa ra danh sách các phần tử trong đa thức theo:
@@ -130,15 +119,11 @@ Biết rằng:
   - + hủy một phần tử bất kỳ trong danh sách
 - Số lượng các phần tử không hạn chế
 - Chỉ có nhu cầu xử lý đa thức trong bộ nhớ chính.
-
 a) Giải thích lý do chọn cấu trúc dữ liệu đã định nghĩa.
-
 b) Viết chương trình con ước lượng giá trị của đa thức P(x) khi biết x.
-
 c) Viết chương trình con rút gọn biểu thức (gộp các phần tử cùng số mũ).
 
 **15.** Xét đoạn chương trình tạo một danh sách liên kết đơn gồm 4 phần tử (không quan tâm dữ liệu) sau đây:
-
 ```
 Dx = NULL; p=Dx;
 Dx = new (NODE);
@@ -149,19 +134,13 @@ for(i=0; i < 4; i++)
 }
 p->next = NULL;
 ```
-
 Đoạn chương trình có thực hiện được thao tác tạo nêu trên không? Tại sao? Nếu không thì có thể sửa lại như thế nào cho đúng?
 
 **16.** Một ma trận chỉ chứa rất ít phần tử với giá trị có nghĩa (ví dụ: phần tử ≠ 0) được gọi là ma trận thưa.
-
 *Ví dụ:*
-
 $$\begin{pmatrix} 0 & 0 & 0 & 3 & 0 & 0 \\ 1 & 0 & 0 & 0 & 2 & 0 \\ 0 & 0 & 4 & 0 & 0 & 0 \end{pmatrix}$$
-
 Dùng cấu trúc danh sách liên kết để tổ chức biểu diễn một ma trận thưa sao cho tiết kiệm nhất (chỉ lưu trữ các phần tử có nghĩa).
-
 a) Viết chương trình cho phép nhập, xuất ma trận.
-
 b) Viết chương trình con cho phép cộng hai ma trận.
 
 **17.** Viết hàm ghép 2 danh sách liên kết vòng L₁, L₂ thành một danh sách liên kết vòng L với phần tử đầu danh sách là phần tử đầu danh sách của L₁.
@@ -198,7 +177,6 @@ Menu
     end
   end
 ```
-
 Chương trình sẽ đọc nội dung tệp MENU.TXT và phát sinh giao diện sau:
 *(Hình minh họa giao diện menu)*
 [![image-data-c2.png](https://i.postimg.cc/mk7K8MGG/image-data-c2.png)](https://postimg.cc/2L8H516H)
