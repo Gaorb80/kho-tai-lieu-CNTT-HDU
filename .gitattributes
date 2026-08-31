@@ -1,2 +1,27 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Hệ điều hành
+.DS_Store
+Thumbs.db
+desktop.ini
+ 
+# File tạm / nháp
+*.tmp
+*.bak
+~$*
+ 
+# File office khóa/tạm khi đang mở
+~$*.docx
+~$*.xlsx
+~$*.pptx
+ 
+# Thư mục biên dịch code (nếu có bài tập/code thực hành)
+/bin/
+/obj/
+__pycache__/
+*.class
+*.pyc
+node_modules/
+ 
+# File môi trường / cấu hình cá nhân
+.env
+.vscode/
+.idea/
