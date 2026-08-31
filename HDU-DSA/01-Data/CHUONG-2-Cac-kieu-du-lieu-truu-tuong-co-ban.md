@@ -201,8 +201,8 @@ Menu
 
 Chương trình sẽ đọc nội dung tệp MENU.TXT và phát sinh giao diện sau:
 *(Hình minh họa giao diện menu)*
-![[Pasted image 20260831142348.png]]
-
+![[image-data-c2.png]]
+	
 **22.** Cài đặt chương trình tạo một bảng tính cho phép thực hiện các phép tính +, -, *, /, div trên các số có tối đa 30 chữ số, có chức năng nhớ (M+, M-, MC, MR).
 
 **23.** Cài đặt chương trình cho phép nhận vào một biểu thức gồm các số, các toán tử +, -, *, /, %, các hàm toán học sin, cos, tan, ln, ex, dấu mở, đóng ngoặc "(", ")" và tính toán giá trị của biểu thức này.
