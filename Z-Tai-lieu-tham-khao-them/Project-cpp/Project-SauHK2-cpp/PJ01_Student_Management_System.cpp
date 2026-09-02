@@ -1,10 +1,9 @@
 /*
- 1. 📚 Student Management System
+Student Management System
 
-**Độ khó: ⭐⭐☆☆☆**
+Độ khó: 2/5
 
 Quản lý sinh viên:
-
 ===== STUDENT MANAGEMENT =====
 1. Add student
 2. Display students
@@ -30,4 +29,8 @@ struct Student {
 };
 ```
 */
+#include <iostream>
+#include <string>
+
+using namespace std;
 
