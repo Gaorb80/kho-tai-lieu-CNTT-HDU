@@ -1,4 +1,4 @@
-# 📚 Kho tài liệu CNTT HDU
+# 📚 kho-tai-lieu-cntt-hdu (HDU IT Knowledge Base)
 
 <p>
   <a href="https://github.com/Gaorb80/kho-tai-lieu-cntt-hdu/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/Gaorb80/kho-tai-lieu-cntt-hdu?style=for-the-badge&color=e3b341&labelColor=1a1a1a"></a>
@@ -72,6 +72,7 @@ kho-tai-lieu-cntt-hdu/
 │   ├── ISSUE_TEMPLATE/
 │   └── PULL_REQUEST_TEMPLATE.md
 │
+├── 00_Chua_phan_loai/
 ├── 01_Ki_1/
 ├── 02_Ki_2/
 ├── 03_Ki_3/
@@ -85,6 +86,8 @@ kho-tai-lieu-cntt-hdu/
 ```
 
 Các thư mục `01_Ki_1` đến `08_Ki_8` tương ứng với 8 học kỳ trong chương trình đào tạo, mỗi thư mục chứa các môn học của kỳ đó. Thư mục `09_Tai_lieu_ngoai_tham_khao_them` dành cho các tài liệu bổ sung, nằm ngoài phạm vi trực tiếp của từng môn học.
+
+`00_Chua_phan_loai/` là nơi tạm chứa tài liệu khi người đóng góp chưa chắc nên đặt vào đâu — cứ để vào đó, sẽ có người sắp xếp lại sau. Mục tiêu là **không để việc "chưa biết đặt đâu" cản trở việc đóng góp**.
 
 > Ở thời điểm hiện tại, README này **không liệt kê liên kết trực tiếp** tới từng môn học hay từng file tài liệu cụ thể, vì cấu trúc chi tiết bên trong vẫn đang được xây dựng và thay đổi thường xuyên. Hãy khám phá trực tiếp trong repository để xem nội dung hiện có.
 
