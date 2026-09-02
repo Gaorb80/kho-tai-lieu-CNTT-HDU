@@ -1,1 +1,0 @@
-Nghiên cứu, tổng hợp kiến thức về "Đánh giá độ phực tạp thuật toán (cơ bản - tập trung vào thời gian)" của bộ môn DSA, phù hợp cho người mới bắt đầu
