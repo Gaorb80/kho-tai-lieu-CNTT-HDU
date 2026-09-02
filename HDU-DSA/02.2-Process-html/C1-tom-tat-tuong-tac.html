@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô Phỏng Tương Tác: Cấu Trúc Dữ Liệu & Thuật Toán</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        h1, h2, h3 { color: #2c3e50; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        
+        /* Controls & Form */
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        input, select, button { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #3498db; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        button:hover { background-color: #2980b9; }
+
+        /* Custom Data Structure Display */
+        .object-preview { background: #ecf0f1; padding: 15px; border-radius: 6px; font-family: monospace; }
+        .memory-block { display: inline-block; padding: 6px 12px; background: #e74c3c; color: white; margin: 2px; border-radius: 4px; font-size: 12px; }
+
+        /* Visualization Box */
+        .array-container { display: flex; align-items: flex-end; height: 150px; gap: 4px; border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 15px; }
+        .bar { background-color: #3498db; width: 100%; text-align: center; color: white; font-size: 10px; transition: height 0.2s, background-color 0.2s; }
+        .bar.searching { background-color: #f1c40f; }
+        .bar.found { background-color: #2ecc71; }
+        
+        /* Metrics */
+        .metric { font-size: 14px; margin-top: 10px; padding: 10px; background: #e8f8f5; border-left: 4px solid #1abc9c; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Minh Hoạ Tương Tác: Cấu Trúc Dữ Liệu & Thuật Toán</h1>
+
+    <div class="card">
+        <h2>1. Thiết Kế Cấu Trúc Dữ Liệu</h2>
+        <p>Các kiểu dữ liệu cơ bản (<code>int</code>, <code>float</code>, <code>char</code>) không đủ để mô tả đối tượng phức tạp. Ta ghép nối chúng lại để tạo ra Cấu trúc dữ liệu mới.</p>
+        
+        <div class="grid">
+            <div>
+                <h3>Tạo Đối Tượng Thực Tế: "Sinh Viên"</h3>
+                <label>Họ và tên (String):</label>
+                <input type="text" id="studentName" value="Dương Bảo">
+                
+                <label>Mã sinh viên (Int):</label>
+                <input type="number" id="studentId" value="202601">
+                
+                <label>Điểm trung bình (Float):</label>
+                <input type="number" step="0.1" id="studentGpa" value="8.5">
+                
+                <button onclick="updateStruct()">Cập nhật Cấu trúc Dữ liệu</button>
+            </div>
+            <div>
+                <h3>Mô Phỏng Trạng Thái Bộ Nhớ</h3>
+                <div class="object-preview" id="structOutput"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>2. Đánh Giá Chi Phí Thực Hiện Thuật Toán</h2>
+        <p>Thử nghiệm tìm kiếm trong mảng để so sánh chi phí ở <strong>Trường hợp tốt nhất</strong>, <strong>Trung bình</strong> và <strong>Trường hợp xấu nhất</strong>.</p>
+        
+        <div class="grid">
+            <div>
+                <label>Kích thước mảng (N):</label>
+                <input type="number" id="arraySize" value="20" min="5" max="50">
+                
+                <label>Vị trí phần tử cần tìm (Trường hợp):</label>
+                <select id="searchCase">
+                    <option value="best">Tốt nhất (Ngay đầu tiên - O(1))</option>
+                    <option value="average">Trung bình (Ở giữa mảng)</option>
+                    <option value="worst" selected>Xấu nhất (Ở cuối mảng hoặc Không thấy - O(N))</option>
+                </select>
+
+                <button onclick="runSearch()">Chạy Mô Phỏng Tìm Kiếm</button>
+                
+                <div class="metric" id="searchMetric">
+                    Số phép so sánh (Chi phí): <strong>0</strong>
+                </div>
+            </div>
+            <div>
+                <h3>Mô Phỏng Mảng Dữ Liệu</h3>
+                <div class="array-container" id="arrayVisualizer"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>3. Ước Lượng Tiệm Cận & Ảnh Hưởng Của Hệ Số Vô Hướng</h2>
+        <p>Đồ thị so sánh tốc độ tăng chi phí theo $N$. Đôi khi thuật toán có độ phức tạp tốt hơn vẫn tốn chi phí thực tế cao hơn do **hệ số vô hướng** lớn khi $N$ nhỏ.</p>
+        
+        <div style="height: 300px;">
+            <canvas id="complexityChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. Struct Logic
+    function updateStruct() {
+        const name = document.getElementById('studentName').value;
+        const id = document.getElementById('studentId').value;
+        const gpa = document.getElementById('studentGpa').value;
+
+        const html = `
+<strong>struct SinhVien {</strong><br>
+&nbsp;&nbsp;<span class="memory-block">string name</span> = "${name}" (Size: ${name.length * 2} Bytes)<br>
+&nbsp;&nbsp;<span class="memory-block">int id</span> = ${id} (Size: 4 Bytes)<br>
+&nbsp;&nbsp;<span class="memory-block">float gpa</span> = ${gpa} (Size: 4 Bytes)<br>
+<strong>};</strong><br><br>
+<em>Tổng dung lượng bộ nhớ cấp phát: ~${(name.length * 2) + 8} Bytes</em>
+        `;
+        document.getElementById('structOutput').innerHTML = html;
+    }
+    updateStruct();
+
+    // 2. Search Algorithm & Cost Logic
+    let currentArray = [];
+    function generateArray() {
+        const size = parseInt(document.getElementById('arraySize').value);
+        currentArray = [];
+        const container = document.getElementById('arrayVisualizer');
+        container.innerHTML = '';
+        
+        for (let i = 0; i < size; i++) {
+            const val = Math.floor(Math.random() * 90) + 10;
+            currentArray.push(val);
+            const bar = document.createElement('div');
+            bar.className = 'bar';
+            bar.style.height = `${val}%`;
+            bar.innerText = val;
+            bar.id = `bar-${i}`;
+            container.appendChild(bar);
+        }
+    }
+    generateArray();
+    document.getElementById('arraySize').addEventListener('change', generateArray);
+
+    async function runSearch() {
+        generateArray();
+        const size = currentArray.length;
+        const searchCase = document.getElementById('searchCase').value;
+        
+        let targetIndex;
+        if (searchCase === 'best') targetIndex = 0;
+        else if (searchCase === 'average') targetIndex = Math.floor(size / 2);
+        else targetIndex = size - 1; // Worst case
+
+        const targetValue = currentArray[targetIndex];
+        let comparisons = 0;
+
+        for (let i = 0; i < size; i++) {
+            comparisons++;
+            const bar = document.getElementById(`bar-${i}`);
+            bar.classList.add('searching');
+            
+            await new Promise(r => setTimeout(r, 100));
+
+            if (i === targetIndex) {
+                bar.classList.remove('searching');
+                bar.classList.add('found');
+                break;
+            }
+            bar.classList.remove('searching');
+        }
+
+        document.getElementById('searchMetric').innerHTML = `
+            Trường hợp: <strong>${searchCase.toUpperCase()}</strong><br>
+            Số phép so sánh thực hiện: <strong>${comparisons} / ${size}</strong><br>
+            Đánh giá: ${searchCase === 'worst' ? 'Đây là giới hạn chi phí tối đa (Trường hợp xấu nhất).' : 'Chi phí thực tế phát sinh.'}
+        `;
+    }
+
+    // 3. Complexity Chart Logic
+    const ctx = document.getElementById('complexityChart').getContext('2d');
+    const nValues = Array.from({length: 20}, (_, i) => (i + 1) * 5);
+
+    // Dynamic data calculating constant factors
+    // Algo A: O(N^2) with small constant -> 0.1 * N^2
+    // Algo B: O(N) with large constant -> 5 * N
+    const algoA = nValues.map(n => 0.1 * n * n); 
+    const algoB = nValues.map(n => 5 * n);
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: nValues,
+            datasets: [
+                {
+                    label: 'Thuật toán A: O(N²) với hệ số nhỏ (0.1 * N²)',
+                    data: algoA,
+                    borderColor: '#e74c3c',
+                    fill: false
+                },
+                {
+                    label: 'Thuật toán B: O(N) với hệ số lớn (5 * N)',
+                    data: algoB,
+                    borderColor: '#2ecc71',
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { title: { display: true, text: 'Kích thước dữ liệu đầu vào (N)' } },
+                y: { title: { display: true, text: 'Chi phí thời gian thực tế (Thời gian thực thi)' } }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
