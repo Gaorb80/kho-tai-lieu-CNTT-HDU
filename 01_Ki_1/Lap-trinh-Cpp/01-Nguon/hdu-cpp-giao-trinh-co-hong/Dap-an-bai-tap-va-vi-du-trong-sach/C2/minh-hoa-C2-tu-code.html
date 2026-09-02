@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C2 | Từ code đến ý nghĩa</title>
+  <style>
+    :root{--ink:#182431;--muted:#65717c;--paper:#f6f3ed;--card:#fffdf9;--line:#ddd7cc;--teal:#087f7b;--coral:#ed704f;--navy:#183746;--yellow:#f4c95d}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.55 "Segoe UI","Noto Sans",Tahoma,sans-serif;font-kerning:normal}
+    header{color:#fff;background:var(--navy);padding:clamp(34px,7vw,78px) max(22px,calc((100% - 1120px)/2));position:relative;overflow:hidden}header:after{content:"C++";position:absolute;right:7vw;bottom:-45px;font:bold 12rem "Segoe UI",Tahoma,sans-serif;color:#ffffff0d;transform:rotate(-8deg)}header>*{position:relative;z-index:1}h1{font:700 clamp(2.3rem,6vw,5.2rem)/1.05 "Segoe UI","Noto Sans",Tahoma,sans-serif;max-width:760px;margin:0 0 18px}header p{max-width:690px;color:#d7e7e7;font-size:1.08rem;margin:0}.eyebrow{color:var(--yellow);font-weight:bold;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+    nav{position:sticky;top:0;z-index:5;background:#fffdf9ee;border-bottom:1px solid var(--line);backdrop-filter:blur(10px);display:flex;gap:8px;overflow:auto;padding:10px max(18px,calc((100% - 1120px)/2))}nav a,button{font:inherit}nav a{white-space:nowrap;text-decoration:none;color:var(--navy);font-weight:bold;padding:7px 13px;border-radius:6px}nav a:hover{background:#e5f1ef}
+    main{width:min(1120px,calc(100% - 36px));margin:38px auto 80px}.section-head{display:flex;gap:20px;align-items:end;justify-content:space-between;border-bottom:2px solid var(--navy);margin:58px 0 20px}.section-head h2{font:700 clamp(1.55rem,3vw,2.3rem)/1.15 "Segoe UI","Noto Sans",Tahoma,sans-serif;margin:0}.section-head p{color:var(--muted);max-width:560px;margin:0 0 5px}.filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.filter button{background:transparent;border:1px solid var(--line);color:var(--navy);cursor:pointer;padding:8px 13px;border-radius:5px;font-weight:bold}.filter button.active,.filter button:hover{background:var(--coral);color:#fff;border-color:var(--coral)}
+    .sequence{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:15px}.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--teal);padding:18px;min-height:205px;box-shadow:5px 5px 0 #e8e1d5}.card.exercise{border-top-color:var(--coral)}.number{color:var(--coral);font:bold .78rem Consolas,monospace;letter-spacing:.04em}.card h3{margin:4px 0 8px;font-size:1.08rem}.card p{margin:7px 0;color:#46535d}.code{display:inline-block;color:var(--teal);background:#e7f3f0;padding:5px 8px;font:700 .86rem Consolas,monospace;border-radius:4px}.card .meaning{color:var(--ink);font-weight:bold}
+    .lab{margin-top:28px;background:var(--navy);color:#fff;padding:24px;border-radius:8px}.lab h2{font:700 1.8rem/1.15 "Segoe UI","Noto Sans",Tahoma,sans-serif;margin:0}.lab-intro{color:#d1e0e2;margin:4px 0 20px}.lab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:13px}.tool{background:#234c5b;padding:15px;border:1px solid #4f7480;border-radius:5px}.tool h3{margin:0 0 12px;color:var(--yellow);font-size:1rem}.fields{display:flex;gap:8px;flex-wrap:wrap}.fields label{display:grid;gap:3px;color:#dbe9e9;font-size:.82rem;flex:1;min-width:75px}.fields input{width:100%;padding:7px;border:0;border-radius:4px;font:inherit}.tool button{margin-top:12px;padding:7px 11px;border:0;border-radius:4px;background:var(--yellow);color:var(--navy);font-weight:bold;cursor:pointer}.result{margin:12px 0 0;background:#122a35;padding:10px;color:#d9f7d5;font: .9rem Consolas,monospace;min-height:43px;white-space:pre-wrap}
+    .bits{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0}.bit{width:33px;height:33px;display:grid;place-items:center;background:#d7ece9;color:var(--navy);font:bold 1.1rem Consolas,monospace;border-radius:4px}.bit.on{background:var(--yellow)}.arrow{color:var(--coral);font-size:1.5rem;align-self:center}.note{margin:20px 0;padding:14px 17px;border-left:5px solid var(--yellow);background:#fff4cf}.note strong{color:var(--navy)}footer{text-align:center;color:var(--muted);padding:0 20px 32px;font-size:.9rem}
+    @media(max-width:650px){.section-head{display:block}.section-head p{margin-top:6px}header:after{font-size:7rem;right:-5px;bottom:-15px}.card{min-height:0}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">C2 / đáp án được đọc ngược thành đề</div>
+    <h1>Từ một đoạn code, nhìn ra bài toán.</h1>
+    <p>Bản đồ trực quan của các file trong thư mục C2. Đi theo thứ tự: các ví dụ xây nền về kiểu dữ liệu và cách in, sau đó các bài tập đưa chúng vào phép tính cụ thể.</p>
+  </header>
+  <nav><a href="#vidu">Ví dụ</a><a href="#bai">Bài 2.01–2.20</a><a href="#lab">Thử trực tiếp</a><a href="#bit">Dịch bit</a></nav>
+  <main>
+    <section id="vidu">
+      <div class="section-head"><h2>01 / Ví dụ nền tảng</h2><p>Đầu tiên là câu hỏi “máy tính lưu và hiển thị con số ra sao?”.</p></div>
+      <div class="sequence">
+        <article class="card"><span class="number">VÍ DỤ 2.3</span><h3>Nhìn cách <code>double</code> được in</h3><p class="meaning">Thử nhiều số lớn, nhỏ và số rất nhỏ.</p><p><span class="code">double d → cout &lt;&lt; d</span></p><p><small>Kết quả mặc định có thể được làm tròn hoặc chuyển sang dạng khoa học.</small></p></article>
+        <article class="card"><span class="number">VÍ DỤ 2.4</span><h3><code>float</code> hay <code>double</code>?</h3><p class="meaning">Cùng một giá trị nhưng độ chính xác khác nhau.</p><p><span class="code">setprecision(20)</span></p><p><small>In nhiều chữ số để thấy giới hạn của số bit dùng để lưu trữ.</small></p></article>
+        <article class="card"><span class="number">VÍ DỤ 2.5</span><h3>Số nguyên lớn bị lệch</h3><p class="meaning">Lưu <code>123456789</code> vào <code>float</code> rồi quan sát.</p><p><span class="code">float f{123456789.0f}</span></p><p><small><code>float</code> không đảm bảo giữ đúng mọi chữ số nguyên lớn.</small></p></article>
+        <article class="card"><span class="number">VÍ DỤ 2.6</span><h3>Biến kết quả thành bảng</h3><p class="meaning">Căn cột và cố định 2 chữ số thập phân.</p><p><span class="code">fixed · setw · left/right</span></p><p><small>Định dạng đầu ra cũng là một phần của chương trình.</small></p></article>
+        <article class="card"><span class="number">VÍ DỤ 2.7</span><h3>Vì sao <code>0.1</code> nhìn khác?</h3><p class="meaning">In cùng một số ở độ chính xác mặc định và cao.</p><p><span class="code">double d{0.1}</span></p><p><small>Biểu diễn nhị phân của 0.1 chỉ là một xấp xỉ.</small></p></article>
+        <article class="card"><span class="number">VÍ DỤ 2.8</span><h3>Cộng mười lần 0.1</h3><p class="meaning">So sánh <code>1.0</code> với <code>0.1 + ... + 0.1</code>.</p><p><span class="code">setprecision(20)</span></p><p><small>Sai số tích lũy là lý do nên thận trọng khi dùng <code>==</code> với số thực.</small></p></article>
+        <article class="card"><span class="number">VÍ DỤ 2.11</span><h3>Kích thước kiểu số</h3><p class="meaning">Liệt kê byte và miền giá trị của kiểu nguyên.</p><p><span class="code">sizeof · climits</span></p></article>
+        <article class="card"><span class="number">VÍ DỤ 2.12</span><h3>Miền giá trị tổng quát</h3><p class="meaning">Tra giới hạn kiểu bằng thư viện chuẩn.</p><p><span class="code">numeric_limits&lt;T&gt;</span></p></article>
+      </div>
+    </section>
+
+    <section id="bai">
+      <div class="section-head"><h2>02 / Bài tập suy ra từ code</h2><p>Các đáp án cho thấy đề bài có thể đã yêu cầu những thao tác dưới đây.</p></div>
+      <div class="filter" aria-label="Lọc loại bài"><button class="active" data-filter="all">Tất cả</button><button data-filter="math">Phép tính</button><button data-filter="logic">Logic / kiểu</button><button data-filter="digit">Chữ số / thời gian</button></div>
+      <div class="sequence" id="exercise-list">
+        <article class="card exercise" data-kind="logic"><span class="number">BÀI 2.01</span><h3>Theo dõi phép gán</h3><p class="meaning">Đọc các giá trị của biến sau chuỗi phép gán và dự đoán đầu ra.</p><p><span class="code">100 → 200 → 400 → 800</span></p></article>
+        <article class="card exercise" data-kind="logic"><span class="number">BÀI 2.02</span><h3>Sửa chương trình chào hỏi</h3><p class="meaning">Tìm lỗi khai báo, macro, chuỗi hoặc cú pháp để in <code>Xin chao</code>.</p></article>
+        <article class="card exercise" data-kind="logic"><span class="number">BÀI 2.03</span><h3>Đổi kiểu và số bát phân</h3><p class="meaning">Theo dõi <code>bool → int → double → int</code> và hiểu <code>010 = 8</code>.</p></article>
+        <article class="card exercise" data-kind="logic"><span class="number">BÀI 2.04</span><h3>Ép kiểu trước hay sau cộng?</h3><p class="meaning">So sánh kết quả khi lấy phần nguyên trước phép cộng và sau phép cộng.</p><p><span class="code">(int)(x + y) ≠ (int)x + (int)y</span></p></article>
+        <article class="card exercise" data-kind="math"><span class="number">BÀI 2.05</span><h3>Trung bình ba số</h3><p class="meaning">Nhập 3 số nguyên, in trung bình cộng với 3 chữ số thập phân.</p><p><span class="code">(i + j + k) / 3.0</span></p></article>
+        <article class="card exercise" data-kind="logic"><span class="number">BÀI 2.06</span><h3>Biểu thức quan hệ</h3><p class="meaning">Tính các biểu thức so sánh lồng nhau, trong đó giá trị đúng/sai được dùng như số 1/0.</p><p><span class="code">a = 2 · b = 1 · c = 1</span></p></article>
+        <article class="card exercise" data-kind="logic"><span class="number">BÀI 2.07</span><h3>Ưu tiên và đoản mạch</h3><p class="meaning">Dự đoán biểu thức có <code>||</code>, <code>!</code>, tiền giảm và phần dư.</p><p><span class="code">a = -1 · b = 2 · c = 1 · in: 0</span></p></article>
+        <article class="card exercise" data-kind="math"><span class="number">BÀI 2.08</span><h3>Hình vuông</h3><p class="meaning">Từ cạnh <code>a</code>, tính chu vi và diện tích.</p><p><span class="code">P = 4a · S = a²</span></p></article>
+        <article class="card exercise" data-kind="math"><span class="number">BÀI 2.09</span><h3>Hình chữ nhật</h3><p class="meaning">Từ chiều dài và rộng, tính chu vi và diện tích.</p><p><span class="code">P = 2(d + r) · S = d × r</span></p></article>
+        <article class="card exercise" data-kind="logic"><span class="number">BÀI 2.10</span><h3>Tìm số lớn hơn</h3><p class="meaning">Nhập hai số thực và chọn số lớn bằng toán tử ba ngôi.</p><p><span class="code">x &gt; y ? x : y</span></p></article>
+        <article class="card exercise" data-kind="logic"><span class="number">BÀI 2.11</span><h3>Kiểm tra chẵn lẻ</h3><p class="meaning">Nhập số nguyên và thông báo <code>LE</code> hoặc <code>CHAN</code> theo phần dư khi chia 2.</p><p><span class="code">n % 2 != 0</span></p></article>
+        <article class="card exercise" data-kind="digit"><span class="number">BÀI 2.12</span><h3>Cộng hai chữ số</h3><p class="meaning">Tách hàng chục và hàng đơn vị rồi tính tổng.</p><p><span class="code">n / 10 + n % 10</span></p></article>
+        <article class="card exercise" data-kind="digit"><span class="number">BÀI 2.13</span><h3>Cộng ba chữ số</h3><p class="meaning">Tách và cộng hàng trăm, hàng chục, hàng đơn vị của số có ba chữ số.</p><p><span class="code">n/100 + (n/10)%10 + n%10</span></p></article>
+        <article class="card exercise" data-kind="digit"><span class="number">BÀI 2.14</span><h3>Đảo số có ba chữ số</h3><p class="meaning">In các chữ số theo thứ tự đơn vị, chục, trăm.</p><p><span class="code">abc → cba</span></p></article>
+        <article class="card exercise" data-kind="digit"><span class="number">BÀI 2.15</span><h3>Lặp các chữ số</h3><p class="meaning">Tạo số gồm mỗi chữ số của số có hai chữ số xuất hiện hai lần.</p><p><span class="code">ab → aabb</span></p></article>
+        <article class="card exercise" data-kind="digit"><span class="number">BÀI 2.16</span><h3>Đổi giây thành h:m:s</h3><p class="meaning">Tách tổng số giây thành giờ, phút và giây còn lại.</p><p><span class="code">h = s/3600</span></p></article>
+        <article class="card exercise" data-kind="math"><span class="number">BÀI 2.17</span><h3>Tính tổng tiền</h3><p class="meaning">Nhập <code>m, n, a</code>, tính tích ba đại lượng và in kèm đơn vị VND.</p><p><span class="code">m × n × a VND</span></p></article>
+        <article class="card exercise" data-kind="math"><span class="number">BÀI 2.18</span><h3>Chia thành các nhóm</h3><p class="meaning">Tính số nhóm cần cho ba lượng, mỗi nhóm chứa tối đa 2 đơn vị.</p><p><span class="code">(n + 1) / 2</span></p></article>
+        <article class="card exercise" data-kind="math"><span class="number">BÀI 2.19</span><h3>Nhân hai số lớn</h3><p class="meaning">Nhập hai số nguyên và in tích bằng kiểu <code>long long</code>.</p><p><span class="code">long long a × b</span></p></article>
+        <article class="card exercise" data-kind="math"><span class="number">BÀI 2.20</span><h3>Tính một biểu thức dài</h3><p class="meaning">Tính biểu thức có các tích lớn mà không để phép nhân trung gian bị tràn.</p><p><span class="code">(a+u)(x-y)+(b+v)y</span></p></article>
+      </div>
+      <div class="note"><strong>Đọc đáp án như đề:</strong> Các bài 2.12–2.15 ngầm yêu cầu số có đúng 2 hoặc 3 chữ số. Đây là giả định từ cách tách chữ số, chưa phải kiểm tra đầu vào đầy đủ.</div>
+    </section>
+
+    <section class="lab" id="lab">
+      <h2>03 / Bàn thử phép tính</h2><p class="lab-intro">Nhập dữ liệu để thấy trực tiếp các công thức xuất hiện trong đáp án.</p>
+      <div class="lab-grid">
+        <div class="tool"><h3>Bài 2.08 · hình vuông</h3><div class="fields"><label>Cạnh a<input id="square-a" type="number" value="5"></label></div><button onclick="square()">Tính</button><div class="result" id="square-out"></div></div>
+        <div class="tool"><h3>Bài 2.09 · chữ nhật</h3><div class="fields"><label>Dài<input id="rect-d" type="number" value="8"></label><label>Rộng<input id="rect-r" type="number" value="3"></label></div><button onclick="rectangle()">Tính</button><div class="result" id="rect-out"></div></div>
+        <div class="tool"><h3>Bài 2.12 · tổng chữ số</h3><div class="fields"><label>Số 2 chữ số<input id="digits-n" type="number" value="42"></label></div><button onclick="digits()">Tách</button><div class="result" id="digits-out"></div></div>
+        <div class="tool"><h3>Bài 2.16 · thời gian</h3><div class="fields"><label>Tổng giây<input id="seconds" type="number" value="3672"></label></div><button onclick="time()">Đổi</button><div class="result" id="time-out"></div></div>
+      </div>
+    </section>
+
+    <section id="bit">
+      <div class="section-head"><h2>04 / Chốt bằng các bit</h2><p>Hai ví dụ cuối chuyển từ con số nhìn thấy sang cách nó được dịch trong hệ nhị phân.</p></div>
+      <div class="card"><span class="number">VÍ DỤ 2.30–2.31</span><h3>Dịch phải là “đẩy” các bit</h3><p class="meaning">Với số không âm, dịch phải 2 bit: <code>212 → 53</code>. Với <code>bitset&lt;4&gt;</code>: <code>0100 → 0010</code>.</p><div class="bits"><span class="bit on">1</span><span class="bit on">1</span><span class="bit">0</span><span class="bit on">1</span><span class="bit on">0</span><span class="arrow">→</span><span class="bit">0</span><span class="bit on">1</span><span class="bit on">0</span><span class="bit on">1</span><span class="bit">0</span></div><p><small>Ý nghĩa thực dụng: dịch trái gần như nhân với 2, dịch phải gần như chia cho 2, miễn là không xảy ra tràn và đang xét số nguyên không âm.</small></p></div>
+    </section>
+  </main>
+  <footer>Trang minh hoạ độc lập · suy ra từ các file C++ trong thư mục C2 · không thay thế đề gốc.</footer>
+  <script>
+    const $ = id => document.getElementById(id);
+    function square(){const a=Number($("square-a").value);$("square-out").textContent=`P = 4 × ${a} = ${(4*a).toFixed(2)}\nS = ${a}² = ${(a*a).toFixed(2)}`}
+    function rectangle(){const d=Number($("rect-d").value),r=Number($("rect-r").value);$("rect-out").textContent=`P = 2 × (${d} + ${r}) = ${(2*(d+r)).toFixed(3)}\nS = ${d} × ${r} = ${(d*r).toFixed(3)}`}
+    function digits(){const n=Math.abs(Math.trunc(Number($("digits-n").value))),t=Math.trunc(n/10),u=n%10;$("digits-out").textContent=`Hàng chục = ${t}\nHàng đơn vị = ${u}\nTổng = ${t+u}`}
+    function time(){let s=Math.max(0,Math.trunc(Number($("seconds").value)));const h=Math.trunc(s/3600);s%=3600;const m=Math.trunc(s/60);$("time-out").textContent=`${h} giờ ${m} phút ${s%60} giây`}
+    document.querySelectorAll(".filter button").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter button").forEach(item=>item.classList.remove("active"));button.classList.add("active");const filter=button.dataset.filter;document.querySelectorAll("#exercise-list .card").forEach(card=>card.hidden=filter!=="all"&&card.dataset.kind!==filter)}));
+    square();rectangle();digits();time();
+  </script>
+</body>
+</html>

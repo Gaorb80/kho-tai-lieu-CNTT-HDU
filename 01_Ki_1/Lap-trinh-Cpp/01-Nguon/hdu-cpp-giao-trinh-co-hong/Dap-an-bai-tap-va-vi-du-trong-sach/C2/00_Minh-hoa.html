@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minh hoạ C++ — Chương 2</title>
+  <style>
+    :root { --ink:#172033; --muted:#5c667a; --paper:#f7f8fc; --card:#fff; --brand:#5146e5; --accent:#ef8958; --line:#e2e6f0; }
+    * { box-sizing:border-box } body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif }
+    header { background:linear-gradient(125deg,#24205c,#5146e5 60%,#885dec); color:white; padding:56px max(24px,calc((100% - 1080px)/2)); }
+    h1 { max-width:850px; margin:0 0 10px; font-size:clamp(2rem,5vw,3.8rem); line-height:1.1 } header p { max-width:760px; margin:0; opacity:.9; font-size:1.08rem }
+    nav { position:sticky; top:0; z-index:2; display:flex; gap:8px; overflow:auto; padding:12px max(20px,calc((100% - 1080px)/2)); background:#ffffffed; border-bottom:1px solid var(--line); backdrop-filter:blur(8px) } nav a { white-space:nowrap; padding:6px 10px; text-decoration:none; color:var(--brand); font-weight:700; border-radius:99px } nav a:hover { background:#eeecff }
+    main { width:min(1080px,calc(100% - 40px)); margin:34px auto 70px } section { scroll-margin-top:70px; margin-top:52px } h2 { margin:0 0 8px; font-size:1.7rem } .intro { color:var(--muted); margin:0 0 18px }
+    .timeline { border-left:3px solid #d9d5ff; margin-left:10px; padding-left:25px } .card { position:relative; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:14px 0; box-shadow:0 4px 14px #27365d0a } .card::before { content:""; position:absolute; width:12px; height:12px; background:var(--accent); border-radius:50%; left:-33px; top:25px; border:4px solid var(--paper) }
+    h3 { margin:0 0 7px; font-size:1.08rem } .tag { display:inline-block; margin-left:7px; padding:2px 8px; background:#eeeefe; border-radius:99px; color:#4135c1; font-size:.78rem; font-weight:700; vertical-align:2px } p { margin:7px 0 } .formula { display:inline-block; margin-top:7px; padding:5px 9px; border-radius:6px; color:#273252; background:#f0f3f9; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:.92rem }
+    .note { border-left:4px solid var(--accent); padding:12px 15px; background:#fff5ed; border-radius:0 10px 10px 0; margin:20px 0 }.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(245px,1fr)); gap:14px }.mini { background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px }.mini h3 { color:var(--brand) }
+    .lab { margin-top:30px; padding:24px; border-radius:16px; background:#202343; color:#fff }.lab h2 { color:#fff }.lab p { color:#d9dcfa }.controls { display:flex; flex-wrap:wrap; gap:10px; align-items:end; margin-top:16px }.controls label { display:grid; gap:4px; color:#d9dcfa; font-size:.88rem } input,select,button { min-height:39px; border-radius:8px; border:1px solid #b9c0d0; padding:7px 10px; font:inherit } button { border:0; background:#ffb06f; color:#33220f; cursor:pointer; font-weight:800 } output { display:block; margin-top:17px; padding:12px; border-radius:8px; background:#111329; color:#c8f6d3; font-family:ui-monospace,Consolas,monospace; white-space:pre-wrap }
+    footer { text-align:center; color:var(--muted); padding:25px }.small { color:var(--muted); font-size:.93rem }
+  </style>
+</head>
+<body>
+  <header><h1>Chương 2: kiểu dữ liệu &amp; biểu thức</h1><p>Trang minh hoạ được suy ra trực tiếp từ các tệp C++ trong thư mục C2. Mỗi mục trả lời: chương trình đang muốn giải quyết việc gì, nó tính như thế nào và cần lưu ý gì.</p></header>
+  <nav><a href="#vidu">Ví dụ</a><a href="#baitap">Bài tập</a><a href="#bit">Dịch bit</a><a href="#thu">Thử nhanh</a></nav>
+  <main>
+    <section id="vidu"><h2>1. Đi từ các ví dụ</h2><p class="intro">Các ví dụ dẫn dắt từ cách lưu số thực, trình bày kết quả đến giới hạn kiểu dữ liệu.</p><div class="timeline">
+      <article class="card"><h3>Ví dụ 2.3 <span class="tag">in số thực</span></h3><p>Gán nhiều số <code>double</code> rồi in ra để quan sát cách <code>cout</code> hiển thị mặc định: số lớn/nhỏ có thể bị làm tròn hoặc hiện dạng khoa học.</p><span class="formula">double d → cout &lt;&lt; d</span></article>
+      <article class="card"><h3>Ví dụ 2.4 <span class="tag">float và double</span></h3><p>In 20 chữ số sau dấu phẩy để so sánh độ chính xác. Cùng một giá trị, <code>float</code> thường sai lệch sớm hơn <code>double</code> vì có ít bit biểu diễn hơn.</p><span class="formula">setprecision(20)</span></article>
+      <article class="card"><h3>Ví dụ 2.5 <span class="tag">mất chính xác</span></h3><p>Thử lưu <code>123456789</code> trong <code>float</code>. Mục tiêu là thấy rằng không phải mọi số nguyên lớn đều được <code>float</code> giữ chính xác.</p></article>
+      <article class="card"><h3>Ví dụ 2.6 <span class="tag">định dạng bảng</span></h3><p>In bảng “THỐNG KÊ” với 2 chữ số thập phân và các cột thẳng hàng. <code>fixed</code>, <code>setprecision</code>, <code>setw</code>, <code>left/right</code> là các công cụ chính.</p></article>
+      <article class="card"><h3>Ví dụ 2.7–2.8 <span class="tag">0.1 không hoàn toàn chính xác</span></h3><p>So sánh số thực <code>0.1</code> với tổng mười lần <code>0.1</code>. Khi in đủ nhiều chữ số, hai kết quả có thể khác rất nhỏ vì số thực nhị phân không biểu diễn chính xác 0.1.</p><span class="formula">Không nên so sánh double bằng == khi tính toán</span></article>
+      <article class="card"><h3>Ví dụ 2.11–2.12 <span class="tag">kích thước &amp; miền giá trị</span></h3><p>Liệt kê số byte và giá trị nhỏ nhất/lớn nhất của các kiểu số. Ví dụ 2.11 dùng hằng trong <code>&lt;climits&gt;</code>; ví dụ 2.12 dùng <code>numeric_limits</code>.</p></article>
+    </div></section>
+
+    <section id="baitap"><h2>2. Từ đáp án suy ra bài tập</h2><p class="intro">Mỗi thẻ là một “đề bài có thể có” rút ra từ mã nguồn, giữ nguyên tinh thần phép tính của chương trình.</p><div class="grid">
+      <article class="mini"><h3>Bài 2.01</h3><p>Theo dõi giá trị biến <code>i</code> qua các phép gán và dự đoán màn hình in gì.</p><span class="formula">100 → 200 → 400; in: 800 400</span></article>
+      <article class="mini"><h3>Bài 2.02</h3><p>Tìm lỗi cú pháp/khai báo trong một chương trình rồi sửa để chương trình chào “Xin chao”.</p><span class="formula">macro, kiểu dữ liệu, biến, chuỗi</span></article>
+      <article class="mini"><h3>Bài 2.03</h3><p>Dự đoán kết quả khi chuyển kiểu <code>bool → int → double → int</code> và chia với số bát phân <code>010</code>.</p><span class="formula">18 → true → 1; 010 = 8; kết quả 1</span></article>
+      <article class="mini"><h3>Bài 2.04</h3><p>Phân tích ảnh hưởng của ép kiểu <code>(int)</code> trước và sau phép cộng số thực.</p><span class="formula">k = 3.9 + int(1.2) = 4; in 0</span></article>
+      <article class="mini"><h3>Bài 2.05</h3><p>Nhập ba số nguyên, tính trung bình cộng chính xác đến 3 chữ số thập phân.</p><span class="formula">(i + j + k) / 3.0</span></article>
+      <article class="mini"><h3>Bài 2.06</h3><p>Theo dõi biểu thức quan hệ và logic, biết kết quả đúng/sai được quy thành <code>1/0</code>.</p><span class="formula">in: 2 1 1</span></article>
+      <article class="mini"><h3>Bài 2.07</h3><p>Rèn thứ tự ưu tiên của toán tử: so sánh, phủ định, <code>||</code>, tiền giảm và phần dư; dự đoán biểu thức cuối.</p><span class="formula">kết quả in: 1</span></article>
+      <article class="mini"><h3>Bài 2.08</h3><p>Nhập cạnh <code>a</code> của hình vuông, in chu vi và diện tích với 2 chữ số thập phân.</p><span class="formula">P = 4a; S = a²</span></article>
+      <article class="mini"><h3>Bài 2.09</h3><p>Nhập chiều dài, chiều rộng hình chữ nhật; in chu vi và diện tích với 3 chữ số thập phân.</p><span class="formula">P = 2(dài + rộng); S = dài × rộng</span></article>
+      <article class="mini"><h3>Bài 2.10</h3><p>Nhập hai số thực và in số lớn hơn, dùng toán tử ba ngôi.</p><span class="formula">x &gt; y ? x : y</span></article>
+      <article class="mini"><h3>Bài 2.11</h3><p>Nhập số nguyên và thông báo <code>LE</code> hay <code>CHAN</code>.</p><span class="formula">n % 2 != 0</span></article>
+      <article class="mini"><h3>Bài 2.12</h3><p>Nhập số có hai chữ số, tính tổng chữ số hàng chục và hàng đơn vị.</p><span class="formula">n / 10 + n % 10</span></article>
+      <article class="mini"><h3>Bài 2.13</h3><p>Nhập số có ba chữ số, tính tổng ba chữ số.</p><span class="formula">n/100 + (n/10)%10 + n%10</span></article>
+      <article class="mini"><h3>Bài 2.14</h3><p>Nhập số có ba chữ số rồi in số theo thứ tự đảo ngược.</p><span class="formula">đơn vị, chục, trăm</span></article>
+      <article class="mini"><h3>Bài 2.15</h3><p>Nhập số có hai chữ số và tạo số gồm mỗi chữ số lặp lại hai lần.</p><span class="formula">ab → aabb (ví dụ 42 → 4422)</span></article>
+      <article class="mini"><h3>Bài 2.16</h3><p>Đổi tổng số giây sang giờ, phút, giây.</p><span class="formula">h=s/3600; m=(s%3600)/60</span></article>
+      <article class="mini"><h3>Bài 2.17</h3><p>Nhập ba số <code>m, n, a</code>, tính tổng tiền theo tích của chúng và thêm đơn vị VND.</p><span class="formula">m × n × a VND</span></article>
+      <article class="mini"><h3>Bài 2.18</h3><p>Với ba lượng <code>a, b, c</code>, tính tổng số nhóm cần thiết khi mỗi nhóm chứa tối đa 2 đơn vị.</p><span class="formula">⌈a/2⌉ + ⌈b/2⌉ + ⌈c/2⌉</span></article>
+      <article class="mini"><h3>Bài 2.19</h3><p>Nhập hai số nguyên lớn và in tích của chúng.</p><span class="formula">long long; a × b</span></article>
+      <article class="mini"><h3>Bài 2.20</h3><p>Nhập <code>a,b,u,v,x,y</code>, tính biểu thức có tích lớn; ép sang <code>long long</code> để tránh tràn số.</p><span class="formula">(a+u)(x−y) + (b+v)y</span></article>
+    </div><aside class="note"><strong>Lưu ý học tập:</strong> Bài 2.12–2.15 ngầm giả sử số đầu vào có đúng 2 hoặc 3 chữ số. Bài 2.18 dùng công thức chia làm tròn lên cho số nguyên dương: <code>(n + 1) / 2</code>.</aside></section>
+
+    <section id="bit"><h2>3. Ví dụ về dịch bit</h2><div class="timeline">
+      <article class="card"><h3>Ví dụ 2.30</h3><p>Dùng <code>n = 212</code> để quan sát <code>&gt;&gt;</code> và <code>&lt;&lt;</code>. Với số nguyên không âm, dịch phải <em>k</em> bit tương đương gần với chia <code>2<sup>k</sup></code>; dịch trái tương đương nhân <code>2<sup>k</sup></code>, nếu không tràn.</p><span class="formula">212 = 11010100₂; 212 &gt;&gt; 2 = 53</span></article>
+      <article class="card"><h3>Ví dụ 2.31</h3><p>Tạo <code>bitset&lt;4&gt;{0100}</code> rồi dịch phải một bit. Khác với số thập phân, <code>bitset</code> giúp nhìn trực tiếp chuỗi bit.</p><span class="formula">0100 → 0010</span></article>
+    </div></section>
+
+    <section id="thu" class="lab"><h2>Thử nhanh các bài tính toán</h2><p>Chọn dạng bài và nhập các giá trị. Kết quả mô phỏng đúng công thức trong các đáp án.</p><div class="controls"><label>Bài<select id="kind"><option value="square">2.08 — Hình vuông</option><option value="rectangle">2.09 — Hình chữ nhật</option><option value="digits2">2.12 — Tổng 2 chữ số</option><option value="reverse">2.14 — Đảo 3 chữ số</option><option value="time">2.16 — Đổi giây</option><option value="groups">2.18 — Chia nhóm 2</option></select></label><label>Giá trị 1<input id="a" type="number" value="12"></label><label>Giá trị 2<input id="b" type="number" value="5"></label><label>Giá trị 3<input id="c" type="number" value="7"></label><button id="run" type="button">Tính kết quả</button></div><output id="result">Chọn bài rồi bấm “Tính kết quả”.</output></section>
+  </main><footer>Minh hoạ cho các tệp C++ trong thư mục C2 · Mở trực tiếp tệp này bằng trình duyệt.</footer>
+  <script>
+    const $=id=>document.getElementById(id); function f(n,d=2){return Number(n).toFixed(d)}
+    $('run').onclick=()=>{const k=$('kind').value,a=Number($('a').value),b=Number($('b').value),c=Number($('c').value);let r='';
+      if(k==='square')r=`a = ${a}\nChu vi = 4 × a = ${f(4*a)}\nDiện tích = a² = ${f(a*a)}`;
+      if(k==='rectangle')r=`dài = ${a}, rộng = ${b}\nChu vi = ${f(2*(a+b),3)}\nDiện tích = ${f(a*b,3)}`;
+      if(k==='digits2'){let n=Math.trunc(Math.abs(a));r=`n = ${n}\nHàng chục = ${Math.trunc(n/10)}, hàng đơn vị = ${n%10}\nTổng = ${Math.trunc(n/10)+n%10}`}
+      if(k==='reverse'){let n=Math.trunc(Math.abs(a));r=`n = ${n}\nSố đảo = ${n%10}${Math.trunc(n/10)%10}${Math.trunc(n/100)}`}
+      if(k==='time'){let n=Math.max(0,Math.trunc(a)),h=Math.trunc(n/3600),m=Math.trunc((n%3600)/60),s=n%60;r=`${n} giây = ${h}h ${m}m ${s}s`}
+      if(k==='groups')r=`a, b, c = ${a}, ${b}, ${c}\nSố nhóm = ⌈a/2⌉ + ⌈b/2⌉ + ⌈c/2⌉\n= ${Math.ceil(a/2)} + ${Math.ceil(b/2)} + ${Math.ceil(c/2)} = ${Math.ceil(a/2)+Math.ceil(b/2)+Math.ceil(c/2)}`;
+      $('result').textContent=r;};
+  </script>
+</body></html>
