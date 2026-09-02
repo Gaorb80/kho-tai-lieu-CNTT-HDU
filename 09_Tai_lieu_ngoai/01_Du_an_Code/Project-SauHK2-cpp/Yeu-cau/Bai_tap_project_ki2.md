@@ -1,27 +1,92 @@
-Có. Với lượng kiến thức hiện tại, **bạn đã đủ để bắt đầu làm project C++ thực tế rồi**. Thậm chí mình khuyên **đừng học thêm quá nhiều lý thuyết trước khi làm**. Hãy lấy project làm nơi ép bản thân sử dụng lại những gì đã học.
+# ĐỀ BÀI PROJECT — LẬP TRÌNH C++ (Sau HK2)
 
-Với syllabus của bạn, mình sẽ ưu tiên project có:
+---
 
-* `if/else`, `switch`
-* `for`, `while`, `do while`
-* Hàm và chia module
-* Mảng 1D/2D
-* Xử lý `string` / C-string
-* `pointer`
-* `struct`
-* Đọc/ghi file
-* Menu CLI
-* Sau đó mới mở rộng một chút sang kiến thức mới
+## 1. Mục tiêu
 
-## 🟢 Level 1 — Làm quen với việc xây một repo hoàn chỉnh
+Thực hiện một trong các project bên dưới để áp dụng toàn bộ kiến thức đã học trong học kỳ, bao gồm:
 
-### 1. 📚 Student Management System
+- `if/else`, `switch`
+- `for`, `while`, `do-while`
+- Hàm và chia module
+- Mảng 1D/2D
+- Xử lý `string` / C-string
+- `pointer`
+- `struct`
+- Đọc/ghi file
+- Menu CLI
+
+## 2. Yêu cầu chung
+
+Mỗi project phải phát triển qua **5 phiên bản (version)**:
+
+### Version 0 — Skeleton
+
+- Xây dựng menu CLI cơ bản, điều hướng bằng số.
+- Chương trình chạy được, người dùng chọn chức năng mà chưa cần xử lý logic.
+
+### Version 1 — Core
+
+- Định nghĩa `struct` dữ liệu chính.
+- Triển khai các hàm xử lý cơ bản: thêm, hiển thị.
+- Tính năng: tính toán (điểm trung bình, tổng, thống kê...), xếp loại / phân loại dựa trên điều kiện.
+
+### Version 2 — CRUD
+
+- Triển khai đầy đủ 4 thao tác: **Create, Read, Update, Delete**.
+- Xử lý hợp lệ dữ liệu đầu vào (validation): ID trùng, giá trị âm, rỗng...
+- Tìm kiếm theo nhiều tiêu chí.
+
+### Version 3 — Persistence (Lưu trữ)
+
+- Đọc dữ liệu từ file khi khởi động chương trình.
+- Ghi dữ liệu ra file khi thoát hoặc theo yêu cầu.
+- Đảm bảo dữ liệu tồn tại qua các lần chạy.
+
+### Version 4 — Refactor & Documentation
+
+- Tách source code thành nhiều file (`.cpp` / `.h`), mỗi module phụ trách một phần chức năng.
+- Viết `README.md` với các mục:
+
+```text
+# Project Name
+## Introduction
+## Features
+## Technologies
+## Concepts practiced
+## Project structure
+## How to compile
+## How to run
+## Example
+## Future improvements
+```
+
+### Cấu trúc thư mục tối thiểu
+
+```text
+ProjectName/
+├── README.md
+├── src/
+│   ├── main.cpp
+│   ├── module.cpp
+│   └── module.h
+├── data/
+│   └── data.txt
+└── docs/
+    └── design.md
+```
+
+---
+
+## 3. Danh sách project
+
+### Project 1 — Student Management System
 
 **Độ khó: ⭐⭐☆☆☆**
 
-Đây là project mình **khuyên bạn làm đầu tiên**.
+Quản lý thông tin sinh viên trong một lớp/khoa.
 
-Quản lý sinh viên:
+**Menu:**
 
 ```text
 ===== STUDENT MANAGEMENT =====
@@ -37,7 +102,7 @@ Quản lý sinh viên:
 0. Exit
 ```
 
-Một sinh viên có thể là:
+**Cấu trúc dữ liệu đề xuất:**
 
 ```cpp
 struct Student {
@@ -50,82 +115,39 @@ struct Student {
 };
 ```
 
-Bạn sẽ luyện được gần như toàn bộ syllabus:
+**Yêu cầu chi tiết:**
 
-| Kiến thức   | Sử dụng |
-| ----------- | ------- |
-| Biến        | ⭐       |
-| `if/switch` | ⭐⭐⭐     |
-| Loop        | ⭐⭐⭐     |
-| Function    | ⭐⭐⭐     |
-| Array       | ⭐⭐⭐     |
-| String      | ⭐⭐⭐     |
-| Pointer     | ⭐⭐      |
-| Struct      | ⭐⭐⭐     |
-| File        | ⭐⭐⭐     |
+| Version | Chức năng |
+|---------|-----------|
+| v1 | Thêm sinh viên, hiển thị danh sách, tính điểm trung bình, xếp loại |
+| v2 | Tìm kiếm theo ID / tên, sửa sinh viên, xóa sinh viên |
+| v3 | Sắp xếp theo điểm / tên, thống kê (số lượng, điểm cao nhất/thấp nhất) |
+| v4 | Lưu vào `students.txt`, đọc khi khởi động, tự động lưu khi thoát |
+| v5 | Tách source thành nhiều file module |
 
-### Các tính năng nên làm theo thứ tự
+**Kiến thức được luyện:**
 
-**v1**
-
-* Thêm sinh viên
-* Hiển thị danh sách
-* Tính điểm trung bình
-* Xếp loại
-
-**v2**
-
-* Tìm kiếm theo ID
-* Tìm kiếm theo tên
-* Sửa sinh viên
-* Xóa sinh viên
-
-**v3**
-
-* Sắp xếp theo điểm
-* Sắp xếp theo tên
-* Thống kê số sinh viên
-* Sinh viên điểm cao nhất/thấp nhất
-
-**v4**
-
-* Lưu vào `students.txt`
-* Đọc dữ liệu từ file khi khởi động
-* Tự động lưu khi thoát
-
-**v5**
-
-* Chia source thành:
-
-```text
-StudentManagement/
-│
-├── README.md
-├── src/
-│   ├── main.cpp
-│   ├── student.cpp
-│   └── student.h
-│
-├── data/
-│   └── students.txt
-│
-└── docs/
-    └── design.md
-```
-
-Project này rất tốt để bạn **tập cách xây một repo chứ không chỉ viết một file `.cpp`**.
+- `if/switch` — xếp loại, validation
+- Loop — duyệt mảng, hiển thị danh sách
+- Function — tách các chức năng riêng biệt
+- Array — lưu trữ danh sách sinh viên
+- String — xử lý tên, ID
+- Struct — định nghĩa dữ liệu
+- File — lưu / đọc dữ liệu
+- Pointer — tham chiếu khi truyền mảng vào hàm
 
 ---
 
-# 🟢 2. 🏦 Banking System
+### Project 2 — Banking System
 
 **Độ khó: ⭐⭐⭐☆☆**
 
-Mô phỏng ngân hàng đơn giản.
+Mô phỏng hệ thống ngân hàng đơn giản.
+
+**Menu:**
 
 ```text
 ===== BANKING SYSTEM =====
-
 1. Create account
 2. Show accounts
 3. Search account
@@ -138,7 +160,7 @@ Mô phỏng ngân hàng đơn giản.
 0. Exit
 ```
 
-Struct:
+**Cấu trúc dữ liệu đề xuất:**
 
 ```cpp
 struct Account {
@@ -148,21 +170,12 @@ struct Account {
 };
 ```
 
-Bạn có thể mở rộng:
+**Yêu cầu chi tiết:**
 
-```text
-Account
-    ↓
-Deposit
-    ↓
-Withdraw
-    ↓
-Transfer
-    ↓
-Transaction
-```
-
-Ví dụ:
+- Nạp tiền: cộng tiền vào tài khoản, kiểm tra số tiền > 0.
+- Rút tiền: kiểm tra số dư đủ, trừ tiền, thông báo lỗi nếu không đủ.
+- Chuyển tiền: trừ tiền tài khoản nguồn, cộng tiền tài khoản đích, kiểm tra cả hai tài khoản tồn tại.
+- Lưu lịch sử giao dịch theo định dạng:
 
 ```text
 [2026-09-01] Deposit +500000
@@ -170,43 +183,34 @@ Ví dụ:
 [2026-09-01] Transfer -200000
 ```
 
-### Kiến thức được luyện
-
-Đặc biệt tốt cho:
-
-* `struct`
-* array
-* function
-* pointer
-* file
-* string
-* validation bằng `if`
-
-**Điểm hay:** project này bắt đầu khiến bạn phải suy nghĩ về **thiết kế dữ liệu**, chứ không chỉ syntax.
+**Kiến thức được luyện:** `struct`, array, function, pointer, file, string, validation bằng `if`.
 
 ---
 
-# 🟢 3. 📦 Inventory Management System
+### Project 3 — Inventory Management System
 
 **Độ khó: ⭐⭐⭐☆☆**
 
-Quản lý kho hàng.
+Quản lý kho hàng sản phẩm.
+
+**Menu:**
 
 ```text
 ===== INVENTORY =====
-
 1. Add product
 2. List products
 3. Search product
 4. Update product
 5. Delete product
-6. Import product
-7. Sell product
-8. Low-stock products
+6. Import product (nhập hàng)
+7. Sell product (bán hàng)
+8. Low-stock products (sản phẩm sắp hết)
 9. Save
 10. Load
 0. Exit
 ```
+
+**Cấu trúc dữ liệu đề xuất:**
 
 ```cpp
 struct Product {
@@ -217,39 +221,35 @@ struct Product {
 };
 ```
 
-Ví dụ:
+**Yêu cầu chi tiết:**
+
+- Bán hàng: kiểm tra tồn kho trước khi bán, thông báo lỗi nếu số lượng yêu cầu > tồn kho.
+- Nhập hàng: cộng thêm số lượng vào sản phẩm có sẵn.
+- Hiển thị sản phẩm sắp hết (tồn kho ≤ ngưỡng do người dùng đặt).
+- Validation: không cho nhập giá âm, ID trùng, tên rỗng.
 
 ```text
 ID       Product          Price       Stock
 ------------------------------------------------
 P001     Keyboard         350000      12
-P002     Mouse             150000      3
-P003     Monitor          3200000      0
+P002     Mouse            150000      3
+P003     Monitor          3200000     0
 ```
 
-Bạn sẽ bắt đầu gặp những bài toán rất thực tế:
-
-> Nếu bán 5 sản phẩm nhưng kho chỉ còn 3 thì sao?
-
-> Nếu nhập ID đã tồn tại thì sao?
-
-> Nếu người dùng nhập số âm thì sao?
-
-Đây chính là lúc kiến thức `if/else + loop + function` bắt đầu có ý nghĩa.
+**Kiến thức được luyện:** `if/else`, loop, function, validation thực tế.
 
 ---
 
-# 🟡 4. 🎮 Game quản lý nhân vật
+### Project 4 — RPG CLI Game
 
 **Độ khó: ⭐⭐⭐☆☆**
 
-Nếu bạn thích game thì project này sẽ thú vị hơn nhiều.
+Trò chơi vai noktasentlich dạng dòng lệnh.
 
-Ví dụ làm một **RPG CLI**.
+**Menu:**
 
 ```text
 ===== RPG GAME =====
-
 1. Create character
 2. Character status
 3. Explore
@@ -260,10 +260,11 @@ Ví dụ làm một **RPG CLI**.
 0. Exit
 ```
 
+**Cấu trúc dữ liệu đề xuất:**
+
 ```cpp
 struct Character {
     char name[50];
-
     int level;
     int hp;
     int maxHp;
@@ -271,11 +272,7 @@ struct Character {
     int defense;
     int gold;
 };
-```
 
-Monster:
-
-```cpp
 struct Monster {
     char name[50];
     int hp;
@@ -284,60 +281,38 @@ struct Monster {
 };
 ```
 
-Combat:
+**Yêu cầu chi tiết:**
+
+- Khám phá: dùng hàm `rand()` để gặp quái vật ngẫu nhiên với chỉ số ngẫu nhiên.
+- Chiến đấu theo lượt:
 
 ```text
 You encountered Slime!
-
-Player HP: 100
-Slime HP: 50
-
+Player HP: 100 | Slime HP: 50
 1. Attack
 2. Run
-
 > 1
-
 You dealt 20 damage.
-
-Slime attacks!
-
-You received 8 damage.
+Slime attacks! You received 8 damage.
 ```
 
-### Bạn sẽ luyện
+- Sau khi thắng: nhận vàng, tăng kinh nghiệm, lên level khi đủ kinh nghiệm.
+- Kho đồ: lưu vật phẩm nhặt được trong quá trình khám phá.
 
-* Random
-* loop
-* condition
-* function
-* struct
-* array
-* file save/load
-
-Sau này có thể mở rộng thành:
-
-```text
-Character
-├── Stats
-├── Inventory
-├── Equipment
-├── Skills
-└── Quest
-```
-
-Đây là project rất tốt nếu sau này bạn muốn học **OOP/game programming**.
+**Kiến thức được luyện:** `rand()`, loop, condition, function, struct, array, file save/load.
 
 ---
 
-# 🟡 5. 📖 Library Management System
+### Project 5 — Library Management System
 
 **Độ khó: ⭐⭐⭐☆☆**
 
-Quản lý thư viện.
+Quản lý thư viện sách.
+
+**Menu:**
 
 ```text
 ===== LIBRARY =====
-
 1. Add book
 2. List books
 3. Search book
@@ -349,6 +324,8 @@ Quản lý thư viện.
 0. Exit
 ```
 
+**Cấu trúc dữ liệu đề xuất:**
+
 ```cpp
 struct Book {
     char id[20];
@@ -357,40 +334,34 @@ struct Book {
     int year;
     bool available;
 };
-```
 
-Có thể thêm:
-
-```cpp
 struct Reader {
     char id[20];
     char name[50];
 };
 ```
 
-Sau đó xử lý quan hệ:
+**Yêu cầu chi tiết:**
 
-```text
-Reader
-   ↓
-Borrow
-   ↓
-Book
-```
+- Mượn sách: kiểm tra sách còn.available == true, ghi nhậnreader mượn, đánh dấu sách không available.
+- Trả sách: xác nhận đã mượn, đánh dấu sách available lại.
+- Sách quá hạn: so sánh ngày mượn với ngày hiện tại (nhập từ bàn phím hoặc dùng hệ thống).
+- Xử lý quan hệ giữa `Reader` và `Book`.
 
-Project này rất tốt để luyện **nhiều struct cùng hoạt động với nhau**.
+**Kiến thức được luyện:** nhiều struct hoạt động đồng thời, logic quan hệ dữ liệu.
 
 ---
 
-# 🟡 6. 📝 To-do / Personal Task Manager
+### Project 6 — To-do / Personal Task Manager
 
 **Độ khó: ⭐⭐☆☆☆**
 
-Đừng coi thường project này. Nó nhỏ nhưng rất phù hợp để luyện clean code.
+Quản lý công việc cá nhân.
+
+**Menu:**
 
 ```text
 ===== TASK MANAGER =====
-
 1. Add task
 2. Show tasks
 3. Complete task
@@ -402,6 +373,8 @@ Project này rất tốt để luyện **nhiều struct cùng hoạt động v�
 0. Exit
 ```
 
+**Cấu trúc dữ liệu đề xuất:**
+
 ```cpp
 struct Task {
     int id;
@@ -411,7 +384,7 @@ struct Task {
 };
 ```
 
-Ví dụ:
+**Ví dụ hiển thị:**
 
 ```text
 [ ] 1. Learn C++
@@ -419,23 +392,20 @@ Ví dụ:
 [ ] 3. Build C++ project
 ```
 
-Project này có thể rất nhỏ nhưng giúp bạn tập:
-
-> **CRUD → Search → Sort → File → Modularization**
-
-Đây là pattern bạn sẽ gặp lại cực kỳ nhiều sau này.
+**Kiến thức được luyện:** CRUD → Search → Sort → File I/O → Modularization.
 
 ---
 
-# 🟡 7. 💰 Personal Expense Tracker
+### Project 7 — Personal Expense Tracker
 
 **Độ khó: ⭐⭐⭐☆☆**
 
-Cái này khá thực tế.
+Theo dõi chi tiêu cá nhân.
+
+**Menu:**
 
 ```text
 ===== EXPENSE TRACKER =====
-
 1. Add expense
 2. Show expenses
 3. Search
@@ -447,6 +417,8 @@ Cái này khá thực tế.
 0. Exit
 ```
 
+**Cấu trúc dữ liệu đề xuất:**
+
 ```cpp
 struct Expense {
     int id;
@@ -457,44 +429,37 @@ struct Expense {
 };
 ```
 
-Có thể thống kê:
+**Yêu cầu chi tiết:**
+
+- Thống kê chi tiêu theo danh mục trong tháng:
 
 ```text
 ===== SEPTEMBER 2026 =====
-
-Food           1,200,000
-Transportation   450,000
-Entertainment    300,000
-Education        500,000
+Food            1,200,000
+Transportation    450,000
+Entertainment     300,000
+Education         500,000
 --------------------------------
-Total          2,450,000
+Total           2,450,000
 ```
 
-Sau này có thể nâng cấp:
+- Tìm kiếm chi tiêu theo danh mục hoặc mô tả.
+- Báo cáo tháng: hiển thị tổng chi, chi tiêu cao nhất/thấp nhất.
 
-```text
-2026
-├── January
-├── February
-├── ...
-└── September
-```
-
-Rất tốt để luyện **array + struct + file + statistics**.
+**Kiến thức được luyện:** array + struct + file + thống kê.
 
 ---
 
-# 🟠 8. 🧮 Mini Excel / Matrix Processor
+### Project 8 — Matrix Processor
 
 **Độ khó: ⭐⭐⭐☆☆**
 
-Nếu muốn **đánh mạnh vào Array + Pointer**, làm project này.
+Xử lý ma trận số — phù hợp nếu muốn củng cố Array + Pointer.
 
-Ví dụ:
+**Menu:**
 
 ```text
 ===== MATRIX PROCESSOR =====
-
 1. Input matrix
 2. Display matrix
 3. Add matrices
@@ -507,41 +472,33 @@ Ví dụ:
 0. Exit
 ```
 
-Ví dụ:
+**Yêu cầu chi tiết:**
+
+- Hỗ trợ ma trận kích thước tối đa NxN (ví dụ N = 100).
+- Cộng, trừ, nhân ma trận: kiểm tra kích thước phù hợp trước khi thực hiện.
+- Chuyển vị: hiển thị kết quả-transposed matrix.
 
 ```text
-A =
-
-1 2 3
-4 5 6
-7 8 9
+A =                 Transpose:
+1 2 3                1 4 7
+4 5 6                2 5 8
+7 8 9                3 6 9
 ```
 
-Sau đó:
-
-```text
-Transpose:
-
-1 4 7
-2 5 8
-3 6 9
-```
-
-Project này không "ứng dụng" bằng Student Management nhưng **rất tốt để củng cố nền tảng C++**.
+**Kiến thức được luyện:** mảng 2D, pointer khi truyền mảng, hàm xử lý ma trận.
 
 ---
 
-# 🟠 9. 🖥️ Mini File Manager
+### Project 9 — Mini File Manager
 
 **Độ khó: ⭐⭐⭐⭐☆**
 
-Đây là project mình khuyên làm **sau khi bạn hoàn thành 2–3 project đầu tiên**.
+Quản lý file cơ bản qua CLI.
 
-Ví dụ:
+**Menu:**
 
 ```text
 ===== MINI FILE MANAGER =====
-
 1. Create file
 2. Write file
 3. Read file
@@ -552,41 +509,26 @@ Ví dụ:
 0. Exit
 ```
 
-Project này sẽ bắt đầu đưa bạn ra khỏi phạm vi "bài tập đại học".
+**Yêu cầu chi tiết:**
 
-Bạn sẽ phải học thêm một chút về:
+- Xử lý đường dẫn file (file path), thư mục.
+- Xử lý lỗi: file không tồn tại, không có quyền truy cập, tên file trùng.
+- Hiển thị danh sách file trong thư mục hiện tại.
 
-* filesystem
-* directory
-* file path
-* exception/error handling
-
-Đây là lúc có thể bắt đầu đụng tới **C++ Standard Library** nhiều hơn.
+**Kiến thức được luyện:** filesystem, directory, file path, exception/error handling, C++ Standard Library.
 
 ---
 
-# 🔴 10. 🏪 Mini E-commerce CLI
+### Project 10 — Mini E-commerce CLI
 
 **Độ khó: ⭐⭐⭐⭐☆**
 
-Nếu muốn có một project tương đối "ra dáng sản phẩm":
+Hệ thống mua bán online đơn giản qua giao diện dòng lệnh.
 
-```text
-                E-Commerce
-                     │
-       ┌─────────────┼─────────────┐
-       ↓             ↓             ↓
-    Product        User          Order
-       │             │             │
-       ↓             ↓             ↓
- Inventory       Account       Cart
-```
-
-CLI:
+**Menu:**
 
 ```text
 ===== ONLINE SHOP =====
-
 1. Browse products
 2. Search products
 3. Add to cart
@@ -599,190 +541,58 @@ CLI:
 0. Exit
 ```
 
-Có thể có:
+**Cấu trúc dữ liệu đề xuất:**
 
 ```cpp
-struct Product {};
-struct User {};
-struct CartItem {};
-struct Order {};
+struct Product {
+    char id[20];
+    char name[50];
+    double price;
+    int stock;
+};
+
+struct CartItem {
+    char productId[20];
+    int quantity;
+};
+
+struct Order {
+    char orderId[20];
+    char date[20];
+    double total;
+};
 ```
 
-Đây là project rất tốt để **chuẩn bị bước chuyển từ procedural programming → OOP**.
+**Yêu cầu chi tiết:**
+
+- Giỏ hàng: thêm sản phẩm (kiểm tra tồn kho), xem giỏ, xóa sản phẩm khỏi giỏ.
+- Thanh toán: trừ tồn kho, tạo đơn hàng, lưu lịch sử.
+- Tài khoản: lưu thông tin người dùng cơ bản.
+
+**Kiến thức được luyện:** tổng hợp — struct phức tạp, nhiều mảng, logic liên quan, file I/O.
 
 ---
 
-# ⭐ Nếu là mình, mình sẽ làm theo roadmap này
+## 4. Đánh giá
 
-Đừng làm 10 project cùng lúc.
-
-Mình sẽ đi:
-
-```text
-                    C++ BASIC
-                       │
-                       ▼
-              ┌─────────────────┐
-              │ 1. Todo Manager │
-              └────────┬────────┘
-                       │
-                       ▼
-          ┌────────────────────────┐
-          │ 2. Student Management │
-          └────────────┬───────────┘
-                       │
-                       ▼
-          ┌────────────────────────┐
-          │ 3. Inventory System    │
-          └────────────┬───────────┘
-                       │
-                       ▼
-             ┌──────────────────┐
-             │ 4. RPG CLI Game  │
-             └─────────┬────────┘
-                       │
-                       ▼
-             ┌──────────────────┐
-             │ 5. Mini E-Shop   │
-             └─────────┬────────┘
-                       │
-                       ▼
-                C++ OOP / STL
-```
-
-## Và quan trọng: đừng chỉ làm "cho chạy"
-
-Mỗi project nên có **5 phiên bản**.
-
-### Version 0 — Skeleton
-
-```text
-main()
- └── menu()
-```
-
-Chỉ cần menu chạy được.
-
-### Version 1 — Core
-
-Thêm:
-
-```text
-struct
-array
-function
-condition
-loop
-```
-
-### Version 2 — CRUD
-
-```text
-Create
-Read
-Update
-Delete
-```
-
-### Version 3 — Persistence
-
-```text
-Program
-   ↕
-File
-```
-
-Tức là đóng chương trình → mở lại → dữ liệu vẫn còn.
-
-### Version 4 — Refactor
-
-Từ:
-
-```text
-main.cpp  ← 1000 dòng 💀
-```
-
-thành:
-
-```text
-src/
-├── main.cpp
-├── student.cpp
-├── student.h
-├── file.cpp
-└── file.h
-```
-
-### Version 5 — Documentation
-
-README phải có:
-
-```text
-# Project Name
-
-## Introduction
-
-## Features
-
-## Technologies
-
-## Concepts practiced
-
-## Project structure
-
-## How to compile
-
-## How to run
-
-## Example
-
-## Future improvements
-```
+| Tiêu chí | Trọng số |
+|----------|----------|
+| Chạy đúng theo yêu cầu (từng version) | 40% |
+| Xử lý lỗi và validation đầu vào | 20% |
+| Code organization (tách module, đặt tên rõ ràng) | 15% |
+| Lưu / đọc file hoạt động chính xác | 15% |
+| README đầy đủ, hướng dẫn cài đặt rõ ràng | 10% |
 
 ---
 
-# 🔥 Một điều mình đặc biệt khuyên bạn
+## 5. Gợi ý thứ tự thực hiện
 
-**Đừng cố nhét tất cả kiến thức vào một project.**
+Nên hoàn thành theo thứ tự từ dễ đến khó:
 
-Ví dụ project Student Management không nhất thiết phải cố dùng pointer ở mọi nơi chỉ vì bạn vừa học pointer.
+1. **Project 6** — Task Manager (⭐⭐, làm quen quy trình)
+2. **Project 1** — Student Management (⭐⭐, CRUD cơ bản)
+3. **Project 3** — Inventory System (⭐⭐⭐, validation thực tế)
+4. **Project 4** — RPG CLI Game (⭐⭐⭐, logic game)
+5. **Project 10** — Mini E-commerce (⭐⭐⭐⭐, tổng hợp)
 
-Hãy để project tạo ra nhu cầu:
-
-> "Mình cần truyền danh sách sinh viên vào function."
-
-→ học cách truyền array.
-
-> "Mình muốn function thay đổi dữ liệu."
-
-→ bắt đầu hiểu reference/pointer.
-
-> "Dữ liệu phải tồn tại sau khi đóng chương trình."
-
-→ file I/O.
-
-> "Project bắt đầu có 10 struct."
-
-→ lúc này bạn sẽ tự nhiên nhận ra:
-
-> "Ủa, sao không dùng class?"
-
-**Đó chính là thời điểm học OOP sẽ cực kỳ hiệu quả.**
-
----
-
-## 🎯 Nếu mục tiêu của bạn là xây một GitHub portfolio
-
-Mình sẽ ưu tiên **5 repo** sau:
-
-| Repo                     | Mục tiêu               |
-| ------------------------ | ---------------------- |
-| `cpp-todo-manager`       | Làm quen project       |
-| `cpp-student-management` | Array + Struct + File  |
-| `cpp-inventory-system`   | CRUD + Data management |
-| `cpp-cli-rpg`            | Logic + Game           |
-| `cpp-mini-ecommerce`     | Tổng hợp               |
-
-Và **repo đầu tiên mình chọn cho bạn là `cpp-student-management`**.
-
-Nó vừa đủ lớn để bạn phải suy nghĩ về architecture, nhưng **chưa lớn đến mức bạn phải học OOP/STL/framework trước khi bắt đầu**. Sau khi làm xong, bạn có thể nhìn lại source và tự nhận ra những phần C++ cơ bản của mình đang yếu ở đâu.
+Mỗi project nên hoàn thành đầy đủ 5 version trước khi chuyển sang project tiếp theo.
