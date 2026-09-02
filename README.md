@@ -82,10 +82,12 @@ kho-tai-lieu-cntt-hdu/
 ├── 07_Ki_7/
 ├── 08_Ki_8/
 │
-└── 09_Tai_lieu_ngoai_tham_khao_them/
+└── 09_Tai_lieu_ngoai/
+    ├── 01_Du_an_Code/
+    └── 02_Ky_nang_Bo_tro/
 ```
 
-Các thư mục `01_Ki_1` đến `08_Ki_8` tương ứng với 8 học kỳ trong chương trình đào tạo, mỗi thư mục chứa các môn học của kỳ đó. Thư mục `09_Tai_lieu_ngoai_tham_khao_them` dành cho các tài liệu bổ sung, nằm ngoài phạm vi trực tiếp của từng môn học.
+Các thư mục `01_Ki_1` đến `08_Ki_8` tương ứng với 8 học kỳ trong chương trình đào tạo, mỗi thư mục chứa các môn học của kỳ đó. Thư mục `09_Tai_lieu_ngoai/` dành cho dự án, code và kiến thức bổ trợ ngoài từng môn học.
 
 `00_Chua_phan_loai/` là nơi tạm chứa tài liệu khi người đóng góp chưa chắc nên đặt vào đâu — cứ để vào đó, sẽ có người sắp xếp lại sau. Mục tiêu là **không để việc "chưa biết đặt đâu" cản trở việc đóng góp**.
 
@@ -93,45 +95,43 @@ Các thư mục `01_Ki_1` đến `08_Ki_8` tương ứng với 8 học kỳ tron
 
 ---
 
-## 🧱 Mô hình tổ chức mỗi môn học: Data → Process → Knowledge
+## 🧱 Mô hình tổ chức mỗi môn học: Nguon → Lam-viec → Tong-hop
 
 Mỗi môn học trong repository được tổ chức theo một mô hình thống nhất gồm 3 thư mục con:
 
 ```text
 [Tên môn học]/
 │
-├── 01-Data/
-├── 02-Process/
-└── 03-Knowledge/
+├── 01-Nguon/
+├── 02-Lam-viec/
+└── 03-Tong-hop/
 ```
 
 ```text
-DATA
+NGUON
   ↓
-PROCESS
+LAM-VIEC
   ↓
-KNOWLEDGE
+TONG-HOP
 ```
 
-Triết lý đằng sau mô hình này khá đơn giản:
+Tên thư mục nói thẳng việc chúng ta cần làm:
 
-> **Data là những gì chúng ta có → Process là những gì chúng ta làm với nó → Knowledge là những gì chúng ta giữ lại sau quá trình đó.**
+> **Nguồn để đọc → chỗ để làm việc → phần đã tổng hợp để dùng lại.**
 
-### `01-Data` — Dữ liệu / tài liệu nguồn
+### `01-Nguon` — Tài liệu để đọc
 
-Nơi lưu trữ tài liệu đầu vào cho việc học: giáo trình, slide bài giảng, tài liệu do giảng viên cung cấp, đề cương môn học, tài liệu tham khảo và các nguồn dữ liệu thô khác cần thiết để học và ôn thi.
+Chứa giáo trình, slide, đề cương và các tài liệu gốc để đọc, học và tham khảo.
 
-### `02-Process` — Không gian xử lý
+### `02-Lam-viec` — Không gian nháp
 
-Nơi diễn ra quá trình xử lý và phát triển nội dung: ghi chú cá nhân, bản nháp, nội dung tổng hợp ban đầu, ý tưởng, những phần đang được kiểm tra hoặc chuẩn hóa.
+Chứa ghi chú nháp, bản thử nghiệm, ý tưởng và nội dung đang hoàn thiện.
 
-**`02-Process` được phép lộn xộn.** Đây là không gian làm việc chứ không phải thư viện tài liệu hoàn chỉnh — nội dung chưa gọn gàng ở đây là điều bình thường, không phải điều sai.
+**`02-Lam-viec` được phép lộn xộn.** Đây là không gian làm việc, không phải thư viện đã hoàn chỉnh.
 
-### `03-Knowledge` — Kiến thức đã chuẩn hóa
+### `03-Tong-hop` — Sản phẩm ôn tập
 
-Nơi chứa kiến thức đã được tinh gọn, có cấu trúc, dễ tra cứu và tập trung vào giá trị lâu dài, kèm ví dụ, bài tập hoặc code khi phù hợp.
-
-Đây cũng là nơi chứa **đề thi, đề kiểm tra, tài liệu ôn thi và bộ câu hỏi ôn tập** — những tài liệu này được xem là một phần có giá trị rất lớn của knowledge base, không phải tài liệu phụ.
+Chứa bài tóm tắt, đề thi kèm lời giải, cheat sheet và nội dung đã được sắp xếp để ôn tập hoặc dùng với AI. Đây cũng là nơi phù hợp cho bộ câu hỏi ôn tập, ví dụ, bài tập và code đã hoàn thiện.
 
 ---
 
@@ -174,14 +174,28 @@ Lưu ý: chỉ đóng góp tài liệu mà bạn có quyền chia sẻ — xem t
 
 ## 📦 Tài liệu ngoài chương trình
 
-Thư mục `09_Tai_lieu_ngoai_tham_khao_them` dành cho kiến thức CNTT bổ sung, nằm ngoài phạm vi trực tiếp của từng môn học, ví dụ như: Git/GitHub, Linux, Command Line, Clean Code, Software Engineering, Testing, API, Web Development, DevOps, Cloud, System Design, English for IT, developer tools và các kỹ năng thực tế khác.
+Thư mục `09_Tai_lieu_ngoai/` chứa nội dung không thuộc riêng một môn học:
+
+```text
+09_Tai_lieu_ngoai/
+├── 01_Du_an_Code/
+│   └── [Ten-du-an]/
+│       ├── Yeu-cau/       → Mô tả bài toán, yêu cầu, thiết kế
+│       ├── Phat-trien/    → Mã nguồn, bản nháp, tài liệu đang làm
+│       └── Thanh-pham/    → Bản chạy được, hướng dẫn dùng, báo cáo
+└── 02_Ky_nang_Bo_tro/
+    └── [Chu-de]/          → Ví dụ: Git, Linux, Tieng-Anh, DevOps
+```
+
+- `01_Du_an_Code/` dành cho project lớn. Cấu trúc **Yeu-cau → Phat-trien → Thanh-pham** giúp tách phần cần làm, quá trình thực hiện và kết quả cuối.
+- `02_Ky_nang_Bo_tro/` dành cho Tiếng Anh, Git/GitHub, Linux, Command Line, Clean Code, Testing, API, Cloud và các kỹ năng thực tế khác. Mỗi chủ đề có một thư mục riêng, **không cần chia ba tầng**.
 
 ---
 
 <a id="-học-cùng-notebooklm-và-ai"></a>
 ## 🤖 Học cùng NotebookLM và AI
 
-Tài liệu trong repository — đặc biệt là các file trong `03-Knowledge` — được tổ chức theo hướng dễ đưa vào NotebookLM hoặc các công cụ AI khác để: đọc tài liệu, hỏi đáp, tóm tắt, tạo study guide, tạo quiz/flashcards, phân tích đề thi, xác định trọng tâm ôn tập và tạo đề luyện tập.
+Khi học với NotebookLM hoặc công cụ AI khác, ưu tiên nạp tài liệu từ `01-Nguon/` để có kiến thức nền và `03-Tong-hop/` để ôn tập, tạo quiz/flashcards hoặc phân tích đề thi. **Bỏ qua `02-Lam-viec/`** nếu không cần thiết vì ghi chú nháp có thể làm nhiễu kết quả.
 
 Một quy trình gợi ý:
 

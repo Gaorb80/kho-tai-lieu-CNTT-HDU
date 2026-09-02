@@ -27,16 +27,38 @@ Phù hợp nếu bạn đã quen Git/GitHub.
 
 ## Cấu trúc thư mục (tham khảo, không bắt buộc phải đúng ngay)
 
-Mỗi môn học chia làm 3 phần:
+Mỗi môn học chính khóa chia làm 3 phần dễ hiểu:
 
 ```text
 [Môn học]/
-├── 01-Data/         → Tài liệu gốc: giáo trình, slide, đề cương
-├── 02-Process/       → Ghi chú, bản nháp (được phép lộn xộn)
-└── 03-Knowledge/     → Kiến thức đã tổng hợp, đề thi, tài liệu ôn tập
+├── 01-Nguon/         → Giáo trình, slide, đề cương và tài liệu gốc để đọc
+├── 02-Lam-viec/      → Ghi chú nháp, bản thử nghiệm (được phép lộn xộn)
+└── 03-Tong-hop/      → Tóm tắt, đề thi + lời giải, cheat sheet để ôn tập/AI
 ```
 
-Đề thi và tài liệu ôn tập đặt vào `03-Knowledge/`. Tài liệu ngoài môn học cụ thể đặt vào `09_Tai_lieu_ngoai_tham_khao_them/`.
+Đề thi, lời giải và tài liệu ôn tập đặt vào `03-Tong-hop/`.
+
+### Project lớn và code
+
+Đặt project lớn tại `09_Tai_lieu_ngoai/01_Du_an_Code/` và tạo một thư mục theo tên dự án:
+
+```text
+09_Tai_lieu_ngoai/01_Du_an_Code/[Ten-du-an]/
+├── Yeu-cau/       → Bài toán, yêu cầu, thiết kế
+├── Phat-trien/    → Mã nguồn và nội dung đang làm
+└── Thanh-pham/    → Bản hoàn thiện, hướng dẫn dùng, báo cáo
+```
+
+### Kỹ năng bổ trợ
+
+Đặt tài liệu Tiếng Anh, Git/GitHub, Linux, DevOps hoặc kỹ năng thực tế khác tại `09_Tai_lieu_ngoai/02_Ky_nang_Bo_tro/`. Tạo thư mục con theo chủ đề; loại tài liệu này **không cần** chia thành ba tầng.
+
+```text
+09_Tai_lieu_ngoai/02_Ky_nang_Bo_tro/
+├── Git-GitHub/
+├── Linux/
+└── Tieng-Anh-CNTT/
+```
 
 **Không biết đặt vào đâu?** Cứ để vào `00_Chua_phan_loai/`, đừng để việc này cản trở bạn đóng góp.
 
