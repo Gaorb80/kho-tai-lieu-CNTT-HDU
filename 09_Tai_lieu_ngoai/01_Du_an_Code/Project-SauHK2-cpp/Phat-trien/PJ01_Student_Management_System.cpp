@@ -29,8 +29,3 @@ struct Student {
 };
 ```
 */
-#include <iostream>
-#include <string>
-
-using namespace std;
-
