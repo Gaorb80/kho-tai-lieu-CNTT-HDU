@@ -1,4 +1,15 @@
-
+---
+tags:
+  - DSA
+  - giai-thuat
+  - do-phuc-tap-thuat-toan
+  - big-o
+  - phan-tich-tiem-can
+  - de-quy
+related:
+  - "[[CHUONG 1- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+  - "[[CHUONG 1-Giai- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+  - "[[Claude_danh-gia-do-phuc-tap-thuat-toan]]"
 ---
 # Đánh Giá Độ Phức Tạp Thời Gian Thuật Toán Trong Cấu Trúc Dữ Liệu Và Thuật Toán
 

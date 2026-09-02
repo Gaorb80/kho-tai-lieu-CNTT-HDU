@@ -1,3 +1,16 @@
+---
+tags:
+  - DSA
+  - muc-luc
+  - tai-lieu-hoc-tap
+related:
+  - "[[CHUONG 1- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+  - "[[CHUONG 1-Giai- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+  - "[[CHUONG-2-Cac-kieu-du-lieu-truu-tuong-co-ban]]"
+  - "[[Claude_danh-gia-do-phuc-tap-thuat-toan]]"
+  - "[[gemini_deep_research_danh-gia-do-phuc-tap-thuat-toan]]"
+---
+
 # 📚 DSA Learning Notes — HDU
 
 Kho lưu trữ tài liệu học tập, tổng hợp và ghi chú cá nhân trong quá trình học môn **Cấu trúc dữ liệu & Giải thuật (Data Structures & Algorithms)** tại **Đại học Hồng Đức (HDU)**.

@@ -1,3 +1,17 @@
+---
+tags:
+  - DSA
+  - cau-truc-du-lieu
+  - kieu-du-lieu-truu-tuong
+  - mang
+  - danh-sach-lien-ket
+  - stack
+  - queue
+  - chuong-2
+related:
+  - "[[CHUONG 1- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+  - "[[CHUONG 1-Giai- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+---
 
 ## 2.1. Bài tập
 

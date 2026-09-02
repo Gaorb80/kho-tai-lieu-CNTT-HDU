@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Trang ôn tập tương tác cho tài liệu Toán cao cấp.">
+  <title>Ôn thi Toán cao cấp</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root { --bg:#f6f8fc; --panel:#fff; --ink:#1e293b; --muted:#64748b; --line:#e2e8f0; --brand:#2563eb; --brand-soft:#dbeafe; --accent:#0f766e; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:16px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    .topbar { position:sticky; z-index:10; top:0; display:flex; gap:12px; align-items:center; padding:12px max(20px,calc((100vw - 1280px)/2)); background:rgba(255,255,255,.94); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
+    .brand { font-weight:800; white-space:nowrap; color:#0f172a; }
+    input, select, button { font:inherit; }
+    input, select { border:1px solid var(--line); border-radius:9px; padding:8px 10px; background:#fff; color:var(--ink); }
+    #search { flex:1; min-width:120px; }
+    button { cursor:pointer; border:0; border-radius:9px; padding:8px 11px; color:#fff; background:var(--brand); }
+    button:hover { filter:brightness(.94); }
+    .layout { display:grid; grid-template-columns:280px minmax(0,850px); justify-content:center; gap:28px; max-width:1200px; margin:0 auto; padding:26px 20px 70px; }
+    aside { position:sticky; top:76px; align-self:start; max-height:calc(100vh - 95px); overflow:auto; padding:16px; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+    aside h2 { margin:0 0 8px; font-size:1rem; }
+    #toc { margin:0; padding-left:18px; }
+    #toc li { margin:5px 0; }
+    #toc a { color:var(--muted); font-size:.9rem; text-decoration:none; }
+    #toc a:hover { color:var(--brand); }
+    main { min-width:0; padding:32px clamp(18px,4vw,52px); border:1px solid var(--line); border-radius:16px; background:var(--panel); box-shadow:0 6px 24px rgba(15,23,42,.04); }
+    h1,h2,h3,h4 { color:#0f172a; line-height:1.25; scroll-margin-top:80px; }
+    h1 { margin-top:0; font-size:clamp(1.8rem,4vw,2.45rem); }
+    h2 { margin-top:2.8rem; padding-top:.2rem; border-top:2px solid var(--brand-soft); font-size:1.5rem; }
+    h3 { margin-top:2rem; font-size:1.2rem; }
+    h4 { font-size:1.05rem; color:var(--accent); }
+    p, li { max-width:75ch; }
+    blockquote { margin:1.2rem 0; padding:12px 16px; border-left:4px solid var(--brand); background:#eff6ff; color:#334155; }
+    pre { overflow:auto; padding:14px; border-radius:10px; background:#0f172a; color:#e2e8f0; }
+    code { padding:.08em .3em; border-radius:4px; background:#f1f5f9; }
+    pre code { padding:0; background:transparent; }
+    table { display:block; overflow:auto; width:max-content; max-width:100%; border-collapse:collapse; margin:1rem 0; }
+    th,td { padding:8px 10px; border:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#eff6ff; }
+    .math { overflow:auto; margin:1rem 0; }
+    .heading-toggle { float:right; padding:2px 8px; background:#e2e8f0; color:#334155; font-size:.78rem; }
+    .heading-toggle:hover { background:#cbd5e1; }
+    .hidden-by-search { display:none !important; }
+    .status { color:var(--muted); font-size:.88rem; }
+    .progress { position:fixed; top:0; left:0; z-index:20; width:0; height:3px; background:var(--accent); transition:width .12s linear; }
+    .empty { padding:18px; border-radius:10px; background:#fff7ed; color:#9a3412; }
+    .focus .topbar, .focus aside { display:none; }
+    .focus .layout { display:block; max-width:900px; padding-top:30px; }
+    .focus main { border:0; box-shadow:none; }
+    @media (max-width:800px) { .layout { display:block; padding:16px 12px 50px; } aside { position:static; max-height:240px; margin-bottom:16px; } main { padding:24px 20px; } .brand { display:none; } .topbar { padding:10px 12px; } }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <header class="topbar">
+    <span class="brand">📘 Ôn thi Toán cao cấp</span>
+    <input id="search" type="search" placeholder="Tìm công thức, dạng bài, từ khóa…" aria-label="Tìm trong tài liệu">
+    <select id="topic" aria-label="Lọc theo chủ đề"><option value="">Tất cả chủ đề</option></select>
+    <button id="focus" type="button" title="Ẩn thanh công cụ và mục lục">Tập trung</button>
+  </header>
+  <div class="layout">
+    <aside><h2>Mục lục</h2><ol id="toc"></ol></aside>
+    <main id="content" aria-live="polite"><p class="status">Đang tải tài liệu ôn tập…</p></main>
+  </div>
+  <script>
+    const source = './Tong-hop-bai-tap-on-thi.md';
+    const content = document.querySelector('#content');
+    const toc = document.querySelector('#toc');
+    const topicSelect = document.querySelector('#topic');
+    const search = document.querySelector('#search');
+    let currentTopic = 'Giới thiệu';
+
+    const escapeHtml = value => value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+    const inline = value => escapeHtml(value)
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    const slug = value => value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+    const add = (tag, html, topic = currentTopic) => { const el = document.createElement(tag); el.innerHTML = html; el.dataset.topic = topic; content.append(el); return el; };
+    const closeList = state => { if (state.list) { state.list = null; } };
+
+    function render(markdown) {
+      content.replaceChildren();
+      const state = { list:null, code:false, math:false, buffer:[] };
+      const lines = markdown.replace(/^---[\s\S]*?---\s*/, '').split(/\r?\n/);
+      for (let index = 0; index < lines.length; index++) {
+        const line = lines[index];
+        if (line.startsWith('```')) {
+          if (!state.code) { closeList(state); state.code = true; state.buffer = []; }
+          else { add('pre', `<code>${escapeHtml(state.buffer.join('\n'))}</code>`); state.code = false; }
+          continue;
+        }
+        if (state.code) { state.buffer.push(line); continue; }
+        const trimmed = line.trim();
+        if (trimmed.startsWith('$$') && trimmed.endsWith('$$') && trimmed.length > 4) {
+          closeList(state);
+          const math = add('div', `\\[${escapeHtml(trimmed.slice(2, -2))}\\]`, currentTopic);
+          math.className = 'math';
+          continue;
+        }
+        if (trimmed === '$$') {
+          if (!state.math) { closeList(state); state.math = true; state.buffer = []; }
+          else {
+            const math = add('div', `\\[${escapeHtml(state.buffer.join('\n'))}\\]`, currentTopic);
+            math.className = 'math';
+            state.math = false;
+          }
+          continue;
+        }
+        if (state.math) { state.buffer.push(line); continue; }
+        const heading = line.match(/^(#{1,4})\s+(.+)$/);
+        if (heading) {
+          closeList(state);
+          const level = heading[1].length, title = heading[2].replace(/^📑\s*/, '').replace(/^🔍\s*/, '').replace(/^💡\s*/, '');
+          const id = slug(title) + '-' + index;
+          const h = add(`h${level}`, inline(title)); h.id = id;
+          if (level === 2) { currentTopic = title; h.dataset.topic = currentTopic; topicSelect.add(new Option(title, title)); }
+          if (level <= 3 && title !== 'Mục lục') { const item = document.createElement('li'); item.innerHTML = `<a href="#${id}">${title}</a>`; if (level === 3) item.style.marginLeft = '10px'; toc.append(item); }
+          continue;
+        }
+        if (/^---\s*$/.test(line)) { closeList(state); add('hr',''); continue; }
+        if (/^>\s?/.test(line)) { closeList(state); add('blockquote', inline(line.replace(/^>\s?/,''))); continue; }
+        const table = line.match(/^\|(.+)\|$/);
+        if (table && !/^\|[-| :]+\|$/.test(line)) {
+          closeList(state); const cells = table[1].split('|').map(x => x.trim());
+          const next = lines[index + 1] || '';
+          const isHeader = /^\|[-| :]+\|$/.test(next);
+          let tableEl = content.lastElementChild;
+          if (!tableEl || tableEl.tagName !== 'TABLE' || tableEl.dataset.topic !== currentTopic) { tableEl = add('table',''); tableEl.dataset.topic = currentTopic; }
+          const row = tableEl.insertRow(); cells.forEach(cell => { const cellEl = document.createElement(isHeader ? 'th' : 'td'); cellEl.innerHTML = inline(cell); row.append(cellEl); });
+          if (isHeader) index++;
+          continue;
+        }
+        const bullet = line.match(/^[-*]\s+(.+)$/);
+        if (bullet) {
+          if (!state.list) { state.list = add('ul',''); }
+          const li = document.createElement('li'); li.innerHTML = inline(bullet[1]); state.list.append(li); continue;
+        }
+        if (!line.trim()) { closeList(state); continue; }
+        closeList(state); add('p', inline(line));
+      }
+      makeCollapsible();
+      if (window.MathJax) MathJax.typesetPromise?.();
+    }
+
+    function makeCollapsible() {
+      content.querySelectorAll('h3').forEach(heading => {
+        const button = document.createElement('button'); button.className = 'heading-toggle'; button.textContent = 'Thu gọn';
+        button.addEventListener('click', () => {
+          let item = heading.nextElementSibling, collapsed = button.dataset.collapsed === 'true';
+          while (item && !['H2','H3'].includes(item.tagName)) { item.hidden = !collapsed; item = item.nextElementSibling; }
+          button.dataset.collapsed = String(!collapsed); button.textContent = collapsed ? 'Thu gọn' : 'Mở rộng';
+        });
+        heading.append(button);
+      });
+    }
+
+    function applyFilters() {
+      const query = search.value.trim().toLocaleLowerCase('vi'); const selected = topicSelect.value;
+      let visible = 0;
+      content.querySelectorAll('[data-topic]').forEach(el => {
+        const topicOK = !selected || el.dataset.topic === selected;
+        const textOK = !query || el.textContent.toLocaleLowerCase('vi').includes(query);
+        el.classList.toggle('hidden-by-search', !(topicOK && textOK));
+        if (topicOK && textOK && !['HR'].includes(el.tagName)) visible++;
+      });
+      document.querySelectorAll('#toc li').forEach(item => item.hidden = selected && !item.textContent.includes(selected));
+      document.querySelector('#result-status')?.remove();
+      if (query || selected) { const status = document.createElement('p'); status.id = 'result-status'; status.className = 'status'; status.textContent = `${visible} khối nội dung phù hợp.`; content.prepend(status); }
+    }
+    search.addEventListener('input', applyFilters); topicSelect.addEventListener('change', applyFilters);
+    document.querySelector('#focus').addEventListener('click', () => { document.body.classList.toggle('focus'); document.querySelector('#focus').textContent = document.body.classList.contains('focus') ? 'Thoát tập trung' : 'Tập trung'; });
+    addEventListener('scroll', () => { const max = document.documentElement.scrollHeight - innerHeight; document.querySelector('#progress').style.width = `${max ? scrollY / max * 100 : 0}%`; }, { passive:true });
+
+    fetch(source).then(response => { if (!response.ok) throw new Error(); return response.text(); }).then(render).catch(() => {
+      content.innerHTML = '<div class="empty"><strong>Không thể tải file Markdown.</strong><br>Hãy mở thư mục này bằng một web server cục bộ (ví dụ Live Server của VS Code) hoặc đưa lên GitHub Pages.</div>';
+    });
+  </script>
+</body>
+</html>
