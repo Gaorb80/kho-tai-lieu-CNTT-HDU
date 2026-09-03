@@ -26,3 +26,11 @@ node_modules/
 .vscode/
 .idea/
 .obsidian/
+
+# Thư mục cấu hình / dữ liệu Copilot và công cụ AI cá nhân
+.agents/
+.claude/
+.opencode/
+.copilot/
+copilot/
+copliot/
