@@ -13,7 +13,7 @@ related:
   - "[[Claude_danh-gia-do-phuc-tap-thuat-toan]]"
   - "[[gemini_deep_research_danh-gia-do-phuc-tap-thuat-toan]]"
 ---
-# Lời giải - Chương 1: Khái quát cấu trúc dữ liệu và giải thuật
+  # Lời giải - Chương 1: Khái quát cấu trúc dữ liệu và giải thuật
 
 ## 1. Bài tập lý thuyết
 
