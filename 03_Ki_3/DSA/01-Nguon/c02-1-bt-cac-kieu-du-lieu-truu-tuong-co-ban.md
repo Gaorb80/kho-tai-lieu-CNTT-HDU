@@ -9,8 +9,11 @@ tags:
   - queue
   - chuong-2
 related:
-  - "[[CHUONG 1- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
-  - "[[CHUONG 1-Giai- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+  - "[[c02-2-nen-tang-cac-kieu-du-lieu-truu-tuong-co-ban]]"
+  - "[[c02-3-giai-cac-kieu-du-lieu-truu-tuong-co-ban]]"
+  - "[[c01-1-bt-khai-quat-ctdl-va-giai-thuat]]"
+  - "[[c01-2-nen-tang-khai-quat-ctdl-va-giai-thuat]]"
+  - "[[c01-3-giai-khai-quat-ctdl-va-giai-thuat]]"
 ---
 
 ## 2.1. Bài tập
