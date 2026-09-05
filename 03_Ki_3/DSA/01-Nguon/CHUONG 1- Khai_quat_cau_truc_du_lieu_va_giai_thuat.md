@@ -1,3 +1,17 @@
+---
+tags:
+  - DSA
+  - university
+  - cau-truc-du-lieu
+  - giai-thuat
+  - do-phuc-tap-thuat-toan
+  - chuong-1
+related:
+  - "[[CHUONG 1-Giai- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+  - "[[CHUONG-2-Cac-kieu-du-lieu-truu-tuong-co-ban]]"
+  - "[[Claude_danh-gia-do-phuc-tap-thuat-toan]]"
+  - "[[gemini_deep_research_danh-gia-do-phuc-tap-thuat-toan]]"
+---
 
 ### 1.1. Tóm tắt
 

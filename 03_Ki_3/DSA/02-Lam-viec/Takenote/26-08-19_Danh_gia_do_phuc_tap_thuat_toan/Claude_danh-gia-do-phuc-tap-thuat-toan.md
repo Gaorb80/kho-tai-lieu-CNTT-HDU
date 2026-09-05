@@ -1,3 +1,16 @@
+---
+tags:
+  - DSA
+  - giai-thuat
+  - do-phuc-tap-thuat-toan
+  - big-o
+  - de-quy
+related:
+  - "[[CHUONG 1- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+  - "[[CHUONG 1-Giai- Khai_quat_cau_truc_du_lieu_va_giai_thuat]]"
+  - "[[gemini_deep_research_danh-gia-do-phuc-tap-thuat-toan]]"
+---
+
 # Đánh Giá Độ Phức Tạp Thuật Toán (Time Complexity) — Kiến Thức Nền Tảng DSA
 
 > Tài liệu dành cho người mới bắt đầu học Cấu trúc dữ liệu & Giải thuật (DSA)
